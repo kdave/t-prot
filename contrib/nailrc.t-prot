@@ -1,0 +1,4 @@
+# $Id: nailrc.t-prot,v 1.1 2010/03/04 18:45:52 jochen Exp $
+# Use t-prot together with Heirloom mailx(1) (aka "nail").
+# Put something like this definition into your ~/.mailrc.
+set pipe-text/plain="t-prot --body -mtS --bigq"

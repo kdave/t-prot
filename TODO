@@ -1,0 +1,65 @@
+	TODO LIST FOR T-PROT
+	====================
+
+For more issues and/or some details, please see the BUGS section of
+the man page. To report bugs, please first see the REPORTING BUGS
+section of the man page.
+
+To make suggestions or tell about features you miss, please drop an
+email to <t-prot@tolot.escape.de>.
+
+
+Known Bugs (more severe ones come first)
+----------------------------------------
+(none)
+
+
+Wishlist
+--------
+    * Support for gpg2. Please send an email to <t-prot@tolot.escape.de>
+if you want this feature in vanilla t-prot.
+    * Now Quoted-printable and the lot in Subject, To and From header
+fields is done by --sani, but UTF-8 is still out there.
+
+
+Rejected issues
+---------------
+    * Improving heuristics for M$ style TOFU is way tricky. In the end,
+it's just plain guessing what is newly added text and what is quoted,
+in particular with most "modern" MUAs disgustingly trying to invent some
+new way of (not machine-parseable, of course) quoting that makes guessing
+even harder.
+
+    * Block-align lines of text. Same problem as above: It's really hard
+guesswork to figure out what is intentional formatting and what is just
+user laziness. Patches solving this issue are greatly welcome, of course.
+
+    * If you set mutt's display_filter to "tee foo" when viewing a pgp
+signed message and attach the resulting file to a pgp signed message,
+the result is confusion when displaying this new message with t-prot.
+
+This sounds much like "garbage in, garbage out", so just keep in mind
+that the whole idea behind t-prot using the display_filter thing is
+that you can turn it off with just one key stroke. It is definitely not
+t-prot's responsibility to make *everything* look good and readable.
+
+
+
+	TODO LIST FOR T-PROT.SL
+	=======================
+
+Wishlist
+--------
+Known problems:
+    * t-prot.sl interacts badly with some other macros using the
+read_article_hook. We should at least document the What and Why. Anyone
+with some more S-Lang experience volunteering for this? ;)
+    * ESC-6/ESC-7 as described in t-prot.sl does not take effect on the
+article currently displayed (just on those processed later on). It would
+be nice to have an alternative taking effect immediately.
+
+
+Please keep in mind that t-prot.sl is an *example* script (for you to get
+an idea on how to integrate t-prot into other software), so these are
+really low priority. However, patches in unified diff format are always
+welcome.

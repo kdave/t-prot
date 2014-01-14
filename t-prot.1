@@ -1,0 +1,710 @@
+.\" $Id: t-prot.1,v 1.187 2012/07/26 14:23:11 jochen Exp $
+.\"
+.TH T-PROT "1" "July 2012" "T-PROT"
+.SH NAME
+t-prot \- TOFU Protection - Display Filter for RFC 5322 messages
+.SH SYNOPSIS
+.BI "t\-prot [" OPTIONS "]..."
+.SH DESCRIPTION
+.PP
+This program is a filter to improve the readability of internet
+messages (emails and usenet posts) by *hiding* some annoying parts,
+e.g. mailing list footers, signatures, and TOFU (see definition below),
+as well as squeezing sequences of blank lines or punctuation.
+The program also detects TOFU or a high quoting ratio in a message (so
+you may take appropriate action, e.g. when submitting messages to a mailing
+list or a news server).
+.br
+The filter is written in Perl and relies on input to be a single
+message conforming to RFC 822 or its successors, RFC 2822 and RFC 5322.
+In messages conforming to MIME (RFCs 2045-2049) t\-prot handles text/plain
+parts, others are not touched.
+.PP
+Already reformatted messages are handled well: the script was
+initially designed to cope with the output of the MUA mutt (which
+is the reason for not using standard CPAN modules for handling
+messages).
+.PP
+T\-prot offers example configuration files for mutt, Heirloom mailx
+and metamail. Also coming with the t-prot package is the example
+S-Lang macro t\-prot.sl for using t-prot from within slrn. There is
+a proof\-of\-concept filter for INN2, which you will have to adapt
+to the needs of the news site you host. For use with sendmail's
+alias(5) file, please see below (the option
+.BR "\-p" " provides an example line)."
+.SH OPTIONS
+.PP
+If you do not specify any options, t\-prot does ... nothing. Every
+feature you want must be turned on explicitly.
+Admittedly, we have quite a number of options for t\-prot. To limit
+confusion they are grouped into five sections: Input/Output Options,
+Advertisement And Mailing List Footers, Filtering Options, Detection
+Options, and Other Options. While the others should be quite clear,
+filtering and detection might deserve a word (or two).
+.PP
+If you want to tune the appearance of your mail from within your MUA
+(or news messages from within your NUA), then go for the Filtering
+Options section.
+.PP
+If you want to use t\-prot to check on mails before they are submitted
+to mailing lists, fed to your news server, or delivered by your MDA,
+then have a peek at the Detection Options section. You may accept or
+reject/bounce messages depending on t\-prot's result.
+.SH INPUT/OUTPUT OPTIONS
+.TP
+.BR "\-i" "=FILE"
+Defines an input file; default is '\-' i.e. STDIN.
+.TP
+.BR "\-o" "=FILE"
+Defines the output file; default is STDOUT.
+.TP
+.B "\-\-body"
+Input consists just of the message's body. There are no RFC 5322 header
+lines.
+.IP
+.IR NOTE :
+This does not work with \-\-pgp\-short, and multipart messages will not
+be detected due to missing headers.
+.TP
+.B "\-\-lax\-security"
+Allow insecure writing method. DO NOT USE UNLESS YOU REALLY KNOW WHAT
+YOU ARE DOING. (This ugly workaround is needed for some early mutt versions
+and should NEVER be used as a default, otherwise it will probably turn into
+a security issue.)
+.sp
+You can use this option safely to enable
+.B "\-o"
+/dev/null (or other files which cannot be changed with the user's
+privileges).
+.TP
+.BR "\-\-max\-lines" =x
+Maximum number of lines a message may count (with headers). If the message
+is longer than x lines, the message will not be processed but printed
+unmodified. Exit status will be EX_DATAERR except when called with \-Mmutt.
+.SH ADVERTISEMENT AND MAILING LIST FOOTERS
+.TP
+.B "\-a"
+"commercial signature":
+Hides "footers" (signatures) from commercial email providers.
+.br
+This option compares the last lines of the message body with any
+footer file found in the directory specified with
+.BR "\-A" " DIRECTORY"
+(which is mandatory for this option). The comparison is done by perl's
+.B index()
+function (please try
+.I perldoc \-f index
+for details).
+.sp
+.IR NOTE :
+This option is not needed if
+.B \-\-ftr\-ad
+is specified.
+.TP
+.B "\-\-ftr\-ad"
+"enable aggressive ad footer matching":
+With this option enabled, t-prot makes footer detection really greedy: We
+assume that commercial email providers aren't even frightened to append
+changing texts *under* their ads which are appended to the message body.
+Because these texts even have changing lengths we simply detect the
+lines of the footer *anywhere* in the body of the message and assume that
+everything below belongs to the footer. (Man, if life where always that
+easy! ;)
+.br
+With this option even GMX ads should be easy to hide -- you buy this with
+a slight performance hit (which is the reason this option is disabled by
+default), and with the possibility that sometimes the algorithm is just a
+little *too* greedy.
+.sp
+.IR NOTE :
+This requires a directory with footer files to be given with option
+.BR "\-A" "=DIRECTORY".
+.TP
+.BR "\-A" "=DIRECTORY"
+"ad footer directory":
+Defines the directory which contains the advertisement list footers (one
+footer per file) which are to be tested when removing them with options
+.B \-a
+or
+.BR \-\-ftr\-ad .
+.br
+This option is also needed if you do not want signature lengths to be
+counted wrong or fullquotes get undetected when an ad footer is
+appended at the bottom of the message (especially when using 
+.B "\-S"
+or
+.BR "\-t" ).
+.TP
+.B "\-l"
+"list signature":
+Hides "footers" (signatures) from mailing lists. Footer detection works like the 
+.B "\-a"
+option.
+.sp
+.IR NOTE :
+This requires a directory with footer files to be given with option
+.BR "\-L" "=DIRECTORY".
+.B \-l
+is not needed if
+.B \-\-ftr\-ml
+is specified.
+.TP
+.B "\-\-ftr\-ml"
+"enable aggressive mailing list footer matching":
+With this option enabled t-prot makes footer detection really greedy: Should
+be helpful with broken list servers, or even if your email provider munges
+the bodies of your messages.
+.br
+Works similar to \-\-ftr\-ad, just that it is intended for mailing list footers.
+.sp
+.IR NOTE :
+This requires a directory with footer files to be given with option
+.BR "\-L" "=DIRECTORY".
+.TP
+.BR "\-L" "=DIRECTORY"
+"list footer directory":
+Defines the directory which contains the mailing list footers (one footer
+per file) which are to be tested when removing them with the options
+.B \-l
+or
+.BR \-\-ftr\-ml .
+.br
+This option is also needed if you do not want signature lengths to be
+counted wrong or fullquotes get undetected when a mailing list footer is
+appended at the bottom of the message (especially when using 
+.B "\-S"
+or
+.BR "\-t" ).
+.SH FILTER OPTIONS
+.TP
+.BR "\-\-bigq" [=n[,x]]
+"shrink big quotes":
+Blocks of quotes with more than n lines will be shrunk to x lines.
+Defaults are 30 for n and 10 for x.
+.TP
+.BR "\-c" "[=n]"
+"compress":
+Squeezes a sequence of blank lines to just n blank lines. n defaults to 2.
+.TP
+.B "\-\-diff"
+Tolerate unified diff (see 
+.BR diff (1)
+and
+.BR patch (1))
+appended after the signature (which usually makes the signature too long
+to be valid).
+.sp
+Also, protect diff standard output from hiding (which would otherwise be easy
+prey for
+.BR "\-t" ).
+.TP
+.B "\-e"
+"ellipsis":
+Squeezes a sequence of four or more dots, exclamation marks, or question marks
+to only three dots or marks, respectively.
+.TP
+.BR "\-\-fixind"
+Fix broken quotes to adhere to RFC 3676 by removing spaces between quote
+characters and adding a space after them.
+.br
+.IR NOTE :
+This may produce false positives if spaces in between quote characters
+are intended (thus changing the quoting level, see RFC 3676 for details).
+.TP
+.B "\-\-groupwise"
+Hides TOFU as produced by Novell Groupwise.
+.TP
+.B "\-k"
+"anti Kammquote":
+Tries (not too aggressively) to fix those broken zig-zag-shaped lines
+wrapped around by some MUAs which are known as "Kammquoting" in German.
+.IP
+.IR NOTE :
+This option is considered stable by now. However, sometimes Kammquotes
+should have been removed but weren't. Please send a bug report if this
+happens to you (after carefully reading the BUGS and REPORTING BUGS
+section of this man page, that is).
+.IP
+Please also note that enabling this option is quite a performance hit.
+.TP
+.BR "\-\-kdiff" =n
+Minimum length difference between two lines for wrapped line detection on
+Kammquotes. For details, please see the source code.
+.br
+Anyway, lower values make the algorithm more aggressive, higher values
+make Kammquotes harder to detect. Default is 20.
+.sp
+Requires
+.BR "\-k" .
+.TP
+.BR "\-\-kmaxl" =n
+Maximum line length for wrapped line detection on Kammquotes. For
+details, please see the source code.
+.br
+Anyway, higher values make the algorithm more aggressive, lower values
+make Kammquotes harder to detect. Default is 80.
+.sp
+Requires
+.BR "\-k" .
+.TP
+.BR "\-\-kminl" =n
+Minimum line length for wrapped line detection on Kammquotes. For
+details, please see the source code.
+.br
+Anyway, lower values make the algorithm more aggressive, higher values
+make Kammquotes harder to detect. Default is 65.
+.sp
+Requires
+.BR "\-k" .
+.TP
+.BR "\-\-locale" =LOCALE
+Specify which locale to use for correct parsing of your MUA's formatting
+of the displayed message (usually it is the locale your MUA uses). Right
+now this option is only used when
+.I "\-Mmutt"
+is specified, but this may change in future. You need the Perl module
+.I "Locale::gettext"
+for this feature.
+.sp
+.IR NOTE :
+If you use
+.B mutt
+or
+.B gnupg
+with locales, t-prot will only work correctly if you specify the corresponding
+locale string. Alternatively, you can use the environment variables
+.IR LC_ALL ,
+.IR LC_MESSAGES ,
+or
+.I LANG
+to specify the locale string.
+.sp
+.IR "NOTE also" :
+You also have to make sure you are running t-prot
+with matching
+.B gnupg
+and 
+.B mutt
+versions. T-prot detects
+.B gnupg
+and
+.B mutt
+locales of the recent stable versions of those programs, earlier versions
+might not work well with a recent version of t-prot. There are patches available
+to make t-prot fit into environments with some other
+.B mutt
+and
+.B gnupg
+versions.
+.TP
+.BR "\-M, \-\-mua" =MUA
+"mail user agent":
+Turn on special treatment for some mail user agents. (Right now only 
+.BR mutt (1)
+is supported, but more might be added in future.)
+.IR Caveat :
+If your MUA is supported by this feature you must ensure t-prot makes
+use of it when called from within your MUA to work as desired.
+.TP
+.B "\-m"
+"Microsoft TOFU":
+Hides TOFU as given by some Microsoft mailers. (You all surely know these
+fullquotes beginning with
+.br
+"\-\-\-\-\- Original Message \-\-\-\-\-"
+.br
+and some header lines...)
+.TP
+.B "\-\-ms\-smart"
+Burn CPU cycles trying to be smart with MS style TOFU: If there are PGP
+signed parts inside the TOFU, the text still might conceal other message
+parts and therefore should not be deleted.
+.sp
+Please note that this is probably just a waste of time because most
+MS Outlook users who do produce this kind of TOFU won't care about
+making their messages the least bit readable or even predictable. So
+this option will probably just be interesting for mutt message hooks
+(to activate it on demand when you
+.BR know " the sender tries to write legible messages)."
+.sp
+Requires
+.BR "\-Mmutt" " and"
+.BR "\-m" .
+.TP
+.B \-\-pgp\-move
+Move PGP and SSL verification output to bottom; requires
+.BR "\-Mmutt" .
+.TP
+.B \-\-pgp\-move\-vrf
+Move PGP and SSL verification output to bottom only if verification shows a
+good signature and the signature could be verified as authentic (using a
+trust path). If there is any problem with the signature, the PGP output
+should not be moved so the user is more likely to notice. Requires
+.BR "\-Mmutt" .
+.sp
+.IR NOTE :
+If gpg is terminated before finished (e.g. hitting Ctrl-C, or using
+.IR kill (1)),
+we cannot always detect if the check was interrupted. Though t-prot tries
+to be smart, there will be false positives.
+.TP
+.B \-\-pgp\-short
+Hide non-relevant PGP key uids; requires
+.BR "\-Mmutt" .
+.TP
+.B "\-r"
+"rip header off":
+Hides all mail header lines.
+.TP
+.B "\-\-reply"
+Subject lines with multiple reply prefixes (Re: and translations into other
+languages) get squeezed to only one prefix.
+.TP
+.BR "\-S" "[=n]"
+"supression of overlong signatures":
+Signatures are to be n lines (not including the one containing dash-dash-space)
+or less. If there are more, it is probably not that spirited after all.
+So with this option you trade it for a
+.B truely
+nice line.
+.br
+If no n is given, default is 4. (We do not recommend using a value other
+than 4. Consider this old-fashioned, but we actually do *like* RFC
+conformance.)
+.sp
+.IR NOTE :
+The line containing "\-\- " ist not counted when testing for an overlong
+signature, but it is included when displaying how many lines were deleted.
+.TP
+.B "\-s"
+"signature deletion":
+Hides signatures, i.e. all lines after a "signature dashes" line,
+i.e. a line with three characters: dash-dash-space (no more, no less).
+.TP
+.B "\-\-sani"
+Sanitize headers "To:", "From:" and "Subject:": Quoted-printable gets
+fixed to the corresponding chars. German Umlauts are translated to their
+"ae", "oe", "ue" pendants.
+.br
+Useful e.g. for searching by subject within MUAs like Berkeley mailx.
+.TP
+.BR "\-\-sigsmax" [=n]
+"maximum number of tolerated signatures":
+Here you can define how many signatures you accept to be treated as such.
+(Most significant behaviour is when microsoft style quotes are removed.
+Experts please see the code for the more subtle implications of this
+option.)
+.br
+Leave empty or specify zero to have an unlimited number of sigs. 
+Default is 1.
+.TP
+.B "\-\-spass"
+"SpamAssassin workaround":
+SpamAssassin (available at
+.IR http://spamassassin.org/ ") often is configured that it adds some"
+lines to the message body containing information about the spam criteria
+which were found matching for the message. This option enables an extra
+test to avoid false positives for Microsoft style TOFU on such messages.
+.TP
+.B "\-t"
+"TOFU deletion":
+Hides "traditional style" TOFU, where each line begins with the
+indent string ">".
+.TP
+.B "\-w"
+"whitespace deletion":
+Hides trailing whitespace (sequences of space and tab).
+CAVEAT: This may lead to interesting effects with crossposts
+between mailing lists or with undetected signature attempts.
+.SH DETECTION OPTIONS
+.TP
+.BR "\-P" "=MESSAGE"
+"user defined bounce message for picky delivery": 
+You may specify your own bounce message to be returned when we try to deliver
+an email and bounce it because there is TOFU inside. See
+.BR "\-p" .
+.TP
+.BR "\-p" "[=ADDRESS]"
+"picky delivery":
+If we really find some TOFU, abort with exit code 
+.IR EX_UNAVAILABLE .
+Otherwise redirect the message to ADDRESS if given.
+.sp
+Intended for use from within mail delivery agents (MDAs) or mail transport 
+agents (MTAs), or even from within INN, so the message bounces if TOFU is
+detected, and does not get on *your* nerves. :) 
+.sp
+As an example for usage with
+.BR sendmail ,
+put this line into your alias file and invoke
+.BR newaliases :
+.sp
+notofu: |"/usr/local/bin/t\-prot \-mt \-p=user@mydomain"
+.sp
+This will bounce messages for <notofu@domainname> if any TOFU is detected
+inside the message, and deliver it to <user@mydomain> otherwise.
+.I Note
+that TOFU is only detected if you specify
+.B "\-t"
+respectively
+.BR "\-m" .
+.sp
+.B PLEASE be careful not to bounce messages to mailing lists!
+.TP
+.BR "\-\-check" [=FLAGS]
+Run checks. If successful, print an error message and quit with
+an appropriate exit code. Useful e.g. for rejecting messages from
+within INN2.
+.IP
+Flags are separated by commas (no whitespaces), and can be the
+following (right now just one flag):
+.IP
+.IR ratio [=n]
+.br
+If the quoting ratio is n or more, the message is rejected. Must be
+between 0 and 1, or else it is entirely disabled. Default is 0.75
+(i.e., 75% of the message lines are quotes).
+.TP
+.B "\-d, \-\-debug"
+Print envelope info to syslog when bouncing TOFU contaminated email.
+Default syslog facility is mail.debug. Requires
+.BR \-p .
+.SH OTHER OPTIONS
+.TP
+.B "\-h, \-\-help"
+Displays a short help text with a summary on all options, and exits.
+.TP
+.B "\-v, \-\-version"
+Prints the current version number and exits.
+.SH ENVIRONMENT
+The environment variables
+.IR LC_ALL ,
+.IR LC_MESSAGES ,
+and
+.I LANG
+are read and respected when interpreting output by mutt or gnupg
+(unless they are overruled by the \-\-locale option). T-prot's own
+output is English regardless of any locale setting.
+.SH EXIT STATUS
+On program exit, t-prot uses exit codes from
+.I /usr/include/sysexits.h
+and thus behaves in a manner that sendmail and others understand when
+calling t-prot.
+.sp
+Currently, the codes used are
+.RS 20
+.PD 0
+.TP
+EX_OK
+.TP
+EX_USAGE
+.TP
+EX_DATAERR
+.TP
+EX_UNAVAILABLE
+.TP
+EX_SOFTWARE
+.TP
+EX_IOERR
+.PD
+.RE
+.sp
+If, however, perl fails to compile and execute t-prot, perl's normal
+exit codes will be returned.
+.SH TOFU?
+TOFU is an abbreviation which mixes German and English words;
+it expands to "text oben, full-quote unten" which means
+"text above - full quote below" and describes the style of so
+many users who let their mailer or newsreader quote everything
+of the previous message and just add some text at the top;
+obviously they think that quoted text must not be changed at all.
+This is quite annoying as it needlessly sends a lot of data
+even when it is not required. Some editing of messages is desired.
+Please point these people to the page 
+.I http://www.river.com/users/share/etiquette/edit.html
+- thank you!
+.SH PERFORMANCE
+There are several ways to fine-tune t-prot's performance:
+.PP
+Some command line options are quite grave a performance hit -- do not
+use \-k and especially \-\-ms\-smart if you are content without them.
+.PP
+Checking for special footers is very costly as well. Put as few footer
+files as absolutely needed in any footer directory.
+.PP
+All PGP related options are eating up lots of CPU time. Try to avoid them
+on unsigned and unencrypted messages.
+.PP
+When calling t-prot from within mutt, you might use mutt's folder-hook
+and message-hook facilities to turn options on only when needed, e.g. to
+set up a different footer directory for each mailing list folder.
+.SH TROUBLESHOOTING
+.TP
+.IR Q :
+I want to make my mailing list footer files match more different mailing
+list footers. Can I use regular expressions, or how can I accomplish
+that?
+.TP
+.IR A :
+Nope, regexp's do not work here. The comparison is made by the perl
+builtin
+.IR index ()
+function (see 
+.B perldoc
+for more detailed info), so you must exactly match the beginning of the
+line. The longer the line you specify, the more precise the match; if
+your line is empty you match unconditionally.
+.PP
+.TP
+.IR Q :
+I use the options \-l and \-L to supress mailing list footers when
+displaying messages in
+.BR mutt (1).
+This does work sometimes, but sometimes it does not: the footer is not
+detected, and therefore full quotes are not deleted and signatures are
+detected as too long (which they aren't).
+.TP
+.IR A :
+This might occur if the message is badly encoded, so mutt cannot resolve
+all encoded characters, e.g. if you have an encoded message on a mailing
+list, and majordomo appends a mailing list footer in a different encoding
+(or even plain us-ascii). "\-\- " simply does not match "\-\-=20".
+.br
+Another problem are non-us-ascii characters. Just avoid them, and 
+everything should work fine.
+.br
+See the preceding Q+A for a solution.
+.PP
+.TP
+.IR Q :
+I want to write a message which contains parts that should *not* be 
+deleted even when filtered with t-prot. Is this possible?
+.TP
+.IR A :
+Yes, but please do not spread word of it. Make unobstrusive use of the
+.I
+verbatim
+instruction:
+.sp
+#v+
+.br
+This line is protected from being filtered by t\-prot !!!!!!!
+.br
+#v\-
+.br
+Text coming now is not.
+.SH AUTHOR
+Written by Jochen Striepe <t\-prot@tolot.escape.de>.
+.SH COPYRIGHT
+All of the documentation and software included in the t-prot releases
+is copyrighted by Jochen Striepe (except when explicitly stated otherwise).
+.PP
+Copyright \(co 2001-2012 Jochen Striepe. All rights reserved.                     
+.PP
+Redistribution and use, with or without modification, are permitted
+provided that the following conditions are met:
+.PP
+1. Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following disclaimer.
+.PP
+2. All advertising materials mentioning features or use of this software
+must display the following acknowledgement:
+.PP
+  This product includes software developed by Jochen Striepe and others.
+.PP
+3. Neither the name of the author nor the names of any contributors may
+be used to endorse or promote products derived from this software without
+specific prior written permission.
+.PP
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND ANY
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+.SH IDEAS AND INSPIRATION
+Many good ideas, bug reports and support from (in alphabetical order) Bjoern
+Buerger, Bjoern Laessig, Christian Borss, Gerfried Fuchs, Martin Neitzel, Martin
+Dietze, Matthias Kilian, Ralf Doeblitz, Sven Guckes and many more (see the
+ChangeLog for active contributors). Many thanks to all of them!
+.sp
+Many thanks to Gerhard H. Wrodnigg who uses a TOFU protection script
+in order to keep the responses to his cancel bot reasonably short.  The
+entire inspiration for this hack came from the "TOFU protection" line of
+his script on many usenet postings.
+.SH AVAILABILITY
+You can get the latest version from
+.IR http://www.escape.de/users/tolot/mutt/ .
+.SH BUGS
+There is a problem when mutt gives a PGP verified or even a multipart
+message to t-prot: The information where the PGP encrypted/signed data
+or even attachments begin and end is plainly embedded in the text, not
+really cleanly recognizable for t-prot. The problem should be worked
+around by now, please send a bug report if it does not work for you.
+.SH "REPORTING BUGS"
+Please note that t-prot development happens on
+.BR "current stable perl versions only" . 
+If you do run t-prot on earlier (or unstable) perl versions, you might
+encounter perl compiler bugs (or funny t-prot behaviour). One solution
+is to upgrade your perl, another is simply to write a bug report. If
+you do not run a current perl version, please include this information
+in your bug report.
+.PP
+Please do
+.I not
+report a bug if
+.br
+ * you found it in the TODO file coming with the distribution. We do
+know those and try to fix them as soon as possible.
+.br
+ * you have an old t-prot version. If you encounter a problem, first
+see if there is a new t-prot version which fixes the issue. If you
+upgraded to the latest version and it still occurs, a bug report is
+just great.
+.PP
+If you noticed a bug when processing a message and want to provide the
+t-prot team with some useful info, please:
+.br
+ * if invoking t-prot by mutt's
+.I display_filter
+facility, just set display_filter to something like
+.IP
+"tee ~/foobar | t\-prot <your options>"
+.PP
+and include ~/foobar in the bug report -- this way we might reproduce
+the bug much easier if you are using a different environment than we do.
+.br
+ * provide information on what command line options you use t-prot
+with, what perl version t-prot runs on your system, and what else might
+be important to enable us reproducing the bug.
+.PP
+Send your bug report to 
+.IR <t\-prot\-bugs@tolot.escape.de> .
+Thank you.
+.SH TODO
+Fix bugs (see the 
+.I BUGS
+section). Beside that, all main features should be implemented by now.
+See the TODO file for more information.
+.SH "SEE ALSO"
+.BR mutt (1),
+.BR muttrc (5)
+and the part about "display_filter", 
+.BR perl (1),
+.BR aliases (5),
+.sp
+RFCs 2045-2049, 3676 and 5322,
+.sp
+.I http://freshmeat.net/articles/t\-prot/
+(a nice, solid introduction),
+.br
+.I http://got.to/quote/
+(German language),
+.br
+.I http://www.river.com/users/share/etiquette/edit.html
+(the Learn To Edit Messages HowTo has found a new home).
+

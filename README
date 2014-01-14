@@ -1,0 +1,46 @@
+T-PROT -- TOFU protection
+=========================
+
+1. What the hell is TOFU?
+   As the man page says:
+   TOFU is an abbreviation which mixes German and English words; it expands
+   to "text oben, full-quote unten" which means "text above  -  full  quote
+   below"  and describes the style of so many users who let their mailer or
+   newsreader quote everything of the previous message and  just  add  some
+   text  at  the  top;  obviously  they  think that quoted text must not be
+   changed at all.  This is quite annoying as it needlessly sends a lot  of
+   data  even when it is not required. Some editing of messages is desired.
+   Please point these people to the page
+     http://www.river.com/users/share/etiquette/edit.html
+   Thank you!
+
+2. What does the script do?
+   It detects,  and when demanded  hides annoying parts in rfc5322 messages:
+   TOFU, huge quoted blocks, signatures (especially when they are too long),
+   excessive punctuation,  blocks of empty lines,  trailing spaces and tabs.
+   For use inside of MTAs or MDAs it exits with appropriate libc exit codes,
+   so annoying messages may be bounced easily.
+   
+3. For what can I use it?
+   There are  several possibilities.  One is  to filter your email  or news 
+   messages when  displaying them  in your User Agent.  Another is blocking
+   annoying messages entirely from your system  -  using the script in some
+   sendmail  (see the man page for an  example)  or procmail rule,  or even
+   inside innd.
+
+4. Give me some example!  What about  an example configuration  for the MUA 
+   mutt(1), or the NUA slrn(1)?
+   An example is included in the distribution.  Please see the man page for
+   further details on the activated features.
+
+5. And what about other User Agents?
+   I just use mutt and slrn, but I will gladly accept configuration samples
+   for other user agents. There are already examples for mailcap(1) and the
+   Heirloom mailx (a.k.a. nail) in the contrib/ directory.
+
+6. Where did the idea come from?
+   Many thanks  to  Gerhard H. Wrodnigg  who uses a  TOFU protection script 
+   in order to keep  the responses to his cancel bot reasonably short.  The
+   entire inspiration for this hack came from the "TOFU protection" line of
+   his script on many usenet postings.
+

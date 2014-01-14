@@ -1,0 +1,2427 @@
+2013-10-29 12:39  Jochen Striepe  <jochen>
+
+	* t-prot: After a very long testing phase, finally the version
+	  update to 3.0.
+
+2013-06-27 18:03  Jochen Striepe  <jochen>
+
+	* t-prot: Umlauts always are so wrong. Hopefully Outlook mails in
+	  German are handled fine now.
+
+2012-07-26 16:23  Jochen Striepe  <jochen>
+
+	* t-prot.1: Make clear that --pgp-move and --pgp-move-vrf also work
+	  on SSL output.
+
+2012-07-26 16:14  Jochen Striepe  <jochen>
+
+	* t-prot: Coding style cleanup in pgp().
+
+2012-07-26 15:11  Jochen Striepe  <jochen>
+
+	* t-prot: Fix detection of unified diffs in the message body when
+	  using --diff.
+
+2012-02-07 12:27  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update year.
+
+2012-02-07 12:19  Jochen Striepe  <jochen>
+
+	* contrib/t-prot.sl: Reflect transition to slang2 in comments.
+
+2012-02-07 11:56  Jochen Striepe  <jochen>
+
+	* contrib/t-prot.sl: Drop support for slang-1, default to slang-2.
+
+2012-02-07 11:55  Jochen Striepe  <jochen>
+
+	* t-prot, contrib/muttrc.t-prot: Drop support for mutt-1.4. Default
+	  to mutt-1.5.x strings.
+
+2012-01-19 15:56  Jochen Striepe  <jochen>
+
+	* t-prot: Fix eYou Webmail Tofu.
+
+2012-01-19 15:50  Jochen Striepe  <jochen>
+
+	* t-prot: Fix text/plain content-type detection with several user
+	  agents.
+
+2010-10-31 12:18  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.101.
+
+2010-10-31 11:13  Jochen Striepe  <jochen>
+
+	* t-prot: Add just another of mutt's decryption messages to the
+	  list. This seems not to be translated yet, so no gettext() is
+	  inserted this time.
+
+2010-07-10 21:14  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.100.
+
+2010-07-10 14:59  Jochen Striepe  <jochen>
+
+	* t-prot: Add line to make -m filter Lotus Domino Webserver
+	  produced TOFU.
+
+2010-07-02 17:52  Jochen Striepe  <jochen>
+
+	* t-prot: Use uniform syntax notation for parameters in command
+	  line options.
+
+2010-07-02 17:48  Jochen Striepe  <jochen>
+
+	* t-prot.1: Use uniform syntax notation for parameters in command
+	  line options.
+
+2010-07-01 18:02  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.99.
+
+2010-07-01 17:58  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: New command line option --fixind to fix broken
+	  quoting (regarding to RFC 3676).  Perhaps this should not be
+	  default, as there might be false positives if the message is
+	  already quoted correctly. Quotes with this particular brokenness
+	  are quite common, though. Patch by Simon Ruderich, many thanks.
+
+2010-06-09 21:32  Jochen Striepe  <jochen>
+
+	* t-prot: Use index() instead of regex for $indent. Patch by Simon
+	  Ruderich.
+
+2010-04-20 11:40  Jochen Striepe  <jochen>
+
+	* t-prot: Revert new handling of empty lines at the beginning of
+	  the body, as it removes lines where it should not.
+
+2010-04-20 10:58  Jochen Striepe  <jochen>
+
+	* t-prot: Another bug with -c: Empty lines before the signature
+	  were not handled properly.  Patch by Simon Ruderich.
+
+2010-04-20 10:57  Jochen Striepe  <jochen>
+
+	* t-prot: This causes -c1 to not create an empty line at the
+	  beginning of the message if there were empty lines at the start
+	  of the body. Patch by Simon Ruderich.
+
+2010-04-20 10:55  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Typos and documentation fixes regarding
+	  $indent. Many thanks to Simon Ruderich.
+
+2010-04-09 08:47  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.98.
+
+2010-04-09 08:45  Jochen Striepe  <jochen>
+
+	* t-prot.1: Clarify --lax-security description.
+
+2010-04-09 08:36  Jochen Striepe  <jochen>
+
+	* t-prot: Use descriptive temp variable names when parsing command
+	  line.
+
+2010-03-06 13:26  Jochen Striepe  <jochen>
+
+	* t-prot.1: Mention configuration files for Heirloom mailx and
+	  metamail. Avoid false impression with --lax-security.
+
+2010-03-06 11:51  Jochen Striepe  <jochen>
+
+	* t-prot.1: Another Typo.
+
+2010-03-06 10:19  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix spelling error. Thanks to Gerfried Fuchs!
+
+2010-03-06 02:32  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.97.
+
+2010-03-06 02:31  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Standard diff(1) output now is protected by
+	  --diff, too. Many thanks to Martin Neitzel and Matthias Kilian.
+
+2010-03-04 23:01  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.96.
+
+2010-03-04 22:48  Jochen Striepe  <jochen>
+
+	* t-prot: Allow -o /dev/null without bitching around.
+
+2010-03-04 22:40  Jochen Striepe  <jochen>
+
+	* t-prot.1: Give some emergency help how to write to /dev/null. You
+	  never know.
+
+2010-03-04 22:19  Jochen Striepe  <jochen>
+
+	* t-prot.1: Remove repetition.
+
+2010-03-04 22:12  Jochen Striepe  <jochen>
+
+	* t-prot: More syntax help fixes.
+
+2010-03-04 22:09  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update date string.
+
+2010-03-04 22:09  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix --version description.
+
+2010-03-04 22:07  Jochen Striepe  <jochen>
+
+	* t-prot.1: More syntax fixes.
+
+2010-03-04 22:02  Jochen Striepe  <jochen>
+
+	* t-prot.1: Change option order for footer options.
+
+2010-03-04 21:48  Jochen Striepe  <jochen>
+
+	* t-prot.1: More grouping: Footers.
+
+2010-03-04 21:34  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix typo.
+
+2010-03-04 21:32  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Special output to "NONE" is not required. You
+	  can use /dev/null.
+
+2010-03-04 21:24  Jochen Striepe  <jochen>
+
+	* t-prot.1: Improve word flow.
+
+2010-03-04 21:22  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix -i and -o syntax.
+
+2010-03-04 21:21  Jochen Striepe  <jochen>
+
+	* t-prot.1: Improve MIME handling description.
+
+2010-03-04 21:19  Jochen Striepe  <jochen>
+
+	* t-prot.1: Explain grouping of options and what happens if none
+	  are specified. Be specific how MIME is handled.
+
+2010-03-04 19:45  Jochen Striepe  <jochen>
+
+	* contrib/: mailcap.t-prot, nailrc.t-prot: New files: configuration
+	  samples for metamail and Heirloom mailx (a.k.a. nail).  Many
+	  thanks to Martin Neitzel!
+
+2010-03-04 18:26  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix -S syntax.
+
+2010-03-04 18:25  Jochen Striepe  <jochen>
+
+	* t-prot: Fix -S syntax help.
+
+2010-03-04 18:24  Jochen Striepe  <jochen>
+
+	* t-prot.1: Group options by meaning, rather than alphabetically.
+	  Thanks to Martin Neitzel for suggesting.
+
+2010-03-04 17:53  Jochen Striepe  <jochen>
+
+	* t-prot: Fix --help output order.
+
+2010-03-04 17:52  Jochen Striepe  <jochen>
+
+	* t-prot: Fix -c syntax in --help, too.
+
+2010-03-03 23:39  Jochen Striepe  <jochen>
+
+	* t-prot.1: Precisify wording for --ms-smart.
+
+2010-03-03 23:36  Jochen Striepe  <jochen>
+
+	* t-prot.1: Be a little more specific as to what --ms-smart really
+	  does.
+
+2010-03-03 23:30  Jochen Striepe  <jochen>
+
+	* t-prot.1: Specify more clearly what locale to specify with
+	  --locale. Thanks to Martin Neitzel for suggesting.
+
+2010-03-03 23:24  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix -c syntax help.
+
+2010-03-03 21:09  Jochen Striepe  <jochen>
+
+	* t-prot: Fix bad typo. Thanks to Martin Neitzel.
+
+2010-03-03 17:50  Jochen Striepe  <jochen>
+
+	* t-prot: Big changes, we step a great deal towards the next major
+	  version number.  Release as v2.95.
+
+2010-03-03 17:27  Jochen Striepe  <jochen>
+
+	* t-prot: Since Getopt::Mixed would break existing configurations
+	  with the new -c command line switch behaviour, the migration to
+	  Getopt::Long has been finished by now: This commit merges the big
+	  bad Getopt::Long patch.  Hope the performance issue does not turn
+	  out to be too grave. Thanks to everyone for testing and providing
+	  feedback.
+
+2010-02-19 17:20  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1, contrib/muttrc.t-prot, contrib/t-prot.sl: The
+	  command line option -c now accepts an optional parameter
+	  specifying the number of empty lines to remain. Thanks to Simon
+	  Ruderich.
+
+2010-02-15 21:13  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.15.
+
+2010-02-15 21:08  Jochen Striepe  <jochen>
+
+	* t-prot.1: Describe --sani more precisely.
+
+2010-02-15 20:21  Jochen Striepe  <jochen>
+
+	* t-prot: Fine-tune some regex.
+
+2010-02-15 20:20  Jochen Striepe  <jochen>
+
+	* t-prot: Fix merging of multiple blank lines within pgp output
+	  using -Mmutt.
+
+2010-02-15 20:02  Jochen Striepe  <jochen>
+
+	* t-prot: Simplify expression.
+
+2010-02-15 19:34  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Add --reply and --sani for fixing annoying
+	  headers. Add documentation for both.	Many thanks to Matthias
+	  Kilian and Martin Neitzel for suggesting and providing some
+	  script invoked by procmail rules.
+
+2010-02-14 13:03  Jochen Striepe  <jochen>
+
+	* t-prot.1: Suggest reading about -p when using -P.
+
+2010-02-14 13:00  Jochen Striepe  <jochen>
+
+	* t-prot.1: Sort options in a consistent, alphabetical way.
+
+2010-02-11 21:59  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix hyphenation. Thanks to Gerfried Fuchs for noticing!
+
+2010-02-11 13:55  Jochen Striepe  <jochen>
+
+	* t-prot.1: Jeff Covey's article should not be missing under SEE
+	  ALSO.
+
+2010-02-11 12:10  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.14.
+
+2010-02-11 12:09  Jochen Striepe  <jochen>
+
+	* t-prot: Code cleanup for --pgp-short. Should get better
+	  performance now.
+
+2010-02-07 23:41  Jochen Striepe  <jochen>
+
+	* t-prot: Tighten --help output.
+
+2010-02-07 23:10  Jochen Striepe  <jochen>
+
+	* t-prot.1: Add fields of usage and mention the INN2 filter file.
+
+2010-02-07 22:56  Jochen Striepe  <jochen>
+
+	* t-prot.1: Improve word flow.
+
+2010-02-07 17:16  Jochen Striepe  <jochen>
+
+	* t-prot.1: Another occurence of RFC 2822, update to RFC 5322.
+
+2010-02-07 15:31  Jochen Striepe  <jochen>
+
+	* t-prot.1: RFC 5322 is offficial standard for the Internet Message
+	  Format since October 2008, obsoleting RFC 2822.
+
+2010-02-06 04:29  Jochen Striepe  <jochen>
+
+	* t-prot: Adjust comment to modern t-prot times.
+
+2010-02-04 22:33  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update contributers list.
+
+2010-02-03 18:58  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update date string.
+
+2010-02-03 18:56  Jochen Striepe  <jochen>
+
+	* t-prot.1: Remove redundancies, improve some descriptions.
+
+2010-02-02 00:48  Jochen Striepe  <jochen>
+
+	* contrib/muttrc.t-prot: By now, --bigq is pretty much standard and
+	  extremely well-tested, so we include it into default
+	  configuration.
+
+2010-02-01 23:34  Jochen Striepe  <jochen>
+
+	* t-prot: Revert thinko from r1.272.
+
+2010-02-01 23:27  Jochen Striepe  <jochen>
+
+	* t-prot: Fix syntax to match coding style.
+
+2010-01-31 23:07  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.13.
+
+2010-01-29 14:03  Jochen Striepe  <jochen>
+
+	* t-prot: Fix long standig false positive for mutt<1.5.18 with
+	  Microsoft TOFU inside a PGP signed message and no lines above the
+	  full quote (indicating a forwarded message rather than a lazy
+	  full quote).	Thanks to Gerfried Fuchs.
+
+2010-01-24 18:17  Jochen Striepe  <jochen>
+
+	* t-prot: Fix newline stripping for locales.
+
+2010-01-08 12:10  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.12.
+
+2010-01-08 12:08  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Exit with exit status EX_OK when --max-lines
+	  hits and -Mmutt is set (mutt is picky when a display_filter
+	  fails). Provide a notification line in that case. Update man
+	  page. Many thanks to Gerfried Fuchs, Martin F. Krafft and Tino
+	  Keitel for reporting, providing a patch and testing.
+
+2010-01-05 13:05  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.11.
+
+2010-01-05 13:01  Jochen Striepe  <jochen>
+
+	* contrib/filter_innd.pl: Command line default has changed, check
+	  flags must be set now.
+
+2010-01-05 12:46  Jochen Striepe  <jochen>
+
+	* t-prot.1: Better explain ratio check value.
+
+2010-01-05 12:43  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update copyright time stamp.
+
+2010-01-05 12:42  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Fix initialization and command line parsing for
+	  --check (this should work as advertised now). Make the ratio
+	  check code a little easier to read. Add the default value for the
+	  ratio check to the man page.
+
+2010-01-04 12:07  Jochen Striepe  <jochen>
+
+	* t-prot.1: Remove URLs to example scripts and configs. The files
+	  are provided with the package.
+
+2009-12-30 22:34  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Fix last commit, release as t-prot v2.10.
+	  Update man page.
+
+2009-12-30 22:28  Jochen Striepe  <jochen>
+
+	* t-prot: Release as t-prot v2.9.
+
+2009-12-30 22:27  Jochen Striepe  <jochen>
+
+	* t-prot: Do not check for message length in attachments (we
+	  checked already for the entire message). Do exit with proper exit
+	  code if message is longer than set in --max-lines (so scripts can
+	  see if we gave up processing).
+
+2009-12-30 10:07  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix speling.
+
+2009-12-25 18:40  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix time stamp.
+
+2009-12-20 22:38  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix rendering for anyone out there using UTF-8. Many
+	  thanks (and a very merry Christmas) to Alfie.
+
+2009-12-19 23:18  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.8.
+
+2009-12-18 22:53  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Update documentation to reflect last change.
+	  Avoid being tripped by endless (or non-existant) headers.
+
+2009-12-18 14:25  Jochen Striepe  <jochen>
+
+	* t-prot: Change check order and remove duplicated code for
+	  --max-lines.
+
+2009-08-24 22:32  Jochen Striepe  <jochen>
+
+	* t-prot: Release as t-prot v2.7.
+
+2009-08-24 19:20  Jochen Striepe  <jochen>
+
+	* t-prot: Cosmetics.
+
+2009-08-24 19:17  Jochen Striepe  <jochen>
+
+	* t-prot: Cosmetics.
+
+2009-08-24 14:15  Jochen Striepe  <jochen>
+
+	* t-prot: Andreas Kneib had problems with some Microsoft Outlook
+	  gargabe and submitted a one-liner. Thanks!
+
+2009-08-24 04:07  Jochen Striepe  <jochen>
+
+	* t-prot: Release as t-prot v2.6.
+
+2009-08-24 03:44  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update dates.
+
+2009-08-24 03:43  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix a typo, thanks to Gerfried Fuchs.
+
+2009-08-24 03:42  Jochen Striepe  <jochen>
+
+	* t-prot: Fix a typo, thanks to Michael Hunger. Tweak the MS-TOFU
+	  pattern, thanks to Simon Ruderich.
+
+2007-09-19 13:32  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Updated time stamps, released as v2.5.
+
+2007-09-19 13:31  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: New feature, new command line switch: Hide TOFU
+	  produced by Novell Groupwise.  Many thanks to Philipp Thomas for
+	  testing and suggesting.
+
+2007-05-24 10:22  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update copyright date.
+
+2007-03-09 16:06  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.4.
+
+2007-03-09 16:05  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Add feature to skip processing very large
+	  messages. Many thanks to Gerfried Fuchs and Scorpi for testing
+	  and suggesting.
+
+2007-03-09 15:33  Jochen Striepe  <jochen>
+
+	* t-prot: Fix formatting for better reading.
+
+2006-12-19 14:13  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.3.
+
+2006-12-19 13:30  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix grammar, update time stamp.
+
+2006-12-19 13:04  Jochen Striepe  <jochen>
+
+	* t-prot: Sync the order of options in the man page and "t-prot
+	  -h".
+
+2006-11-30 15:06  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.2.
+
+2006-11-30 14:02  Jochen Striepe  <jochen>
+
+	* t-prot: Add string to detect gmx.de's M$ style TOFU.
+
+2006-09-25 16:42  Jochen Striepe  <jochen>
+
+	* t-prot.1: Make sure we can ship files not copyrighted by the
+	  author of the package.
+
+2006-07-16 10:50  Jochen Striepe  <jochen>
+
+	* t-prot.1: There are no patches for locales of old mutt versions.
+
+2006-07-11 16:05  Jochen Striepe  <jochen>
+
+	* t-prot.1: Updated time stamp.
+
+2006-07-10 12:01  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix spelling and grammar.
+
+2006-06-23 19:28  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix capitalization of "pgp".
+
+2006-06-23 19:25  Jochen Striepe  <jochen>
+
+	* t-prot.1: Add section about performance issues.
+
+2006-06-18 00:45  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v2.1.
+
+2006-06-18 00:45  Jochen Striepe  <jochen>
+
+	* t-prot: Frank Terbeck suggested a more tolerant handling of
+	  signatures -- trailing newlines are no longer counted as
+	  signature lines, thus fixing some mailing list software
+	  behaviour.
+
+2006-06-17 14:34  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update time stamp.
+
+2006-06-17 14:34  Jochen Striepe  <jochen>
+
+	* t-prot.1: Section "BUGS" is for known bugs in t-prot, not for
+	  learning how to report them.
+
+2006-05-16 14:07  Jochen Striepe  <jochen>
+
+	* t-prot: Klaus Ethgen reported some undetected MS TOFU hidden in
+	  MIME attachments.  Many thanks!
+
+2006-05-16 14:07  Jochen Striepe  <jochen>
+
+	* t-prot.1: There is no BUGS file any longer.
+
+2006-05-16 13:34  Jochen Striepe  <jochen>
+
+	* t-prot.1: Time stamp and copyright updated.
+
+2006-05-16 13:33  Jochen Striepe  <jochen>
+
+	* contrib/t-prot.sl: Clarify comments reg. S-Lang v2.
+
+2005-06-29 14:45  Jochen Striepe  <jochen>
+
+	* t-prot.1: Better formatting for "see also".
+
+2005-06-29 14:36  Jochen Striepe  <jochen>
+
+	* t-prot.1: Add section about exit status.
+
+	  Update date string.
+
+2005-05-27 12:00  Jochen Striepe  <jochen>
+
+	* t-prot: Re-release as v2.0. No code change since v1.104.
+
+2005-05-13 02:06  Jochen Striepe  <jochen>
+
+	* t-prot.1: Matthias Kilian suggested some cleanup for better
+	  reading. Many thanks!
+
+2005-05-12 17:29  Jochen Striepe  <jochen>
+
+	* t-prot.1: Include the BUGS file in the REPORTING BUGS section.
+
+2005-05-12 17:07  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix typo.
+
+2005-05-12 17:07  Jochen Striepe  <jochen>
+
+	* t-prot.1: Provide more information on how to submit bug reports.
+
+2005-05-12 05:32  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix formatting.
+
+2005-05-12 05:29  Jochen Striepe  <jochen>
+
+	* t-prot.1: Another typo.
+
+2005-05-12 05:27  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix typo.
+
+2005-05-12 04:54  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.104.
+
+2005-05-11 14:14  Jochen Striepe  <jochen>
+
+	* t-prot.1: Many clarifications and added details. Some formatting
+	  cleanup.
+
+2005-05-11 11:21  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix copyright date string.
+
+2005-05-11 11:17  Jochen Striepe  <jochen>
+
+	* t-prot.1: LICENSE CHANGE!
+
+	  Alfie is completely right: Since the copyright notice essentially
+	  is a BSD license, it is the Right Thing to simply switch to a BSD
+	  license (slightly modified, as there is no binary code in
+	  t-prot).
+
+2005-05-11 03:22  Jochen Striepe  <jochen>
+
+	* t-prot.1: LICENSE CHANGE! More clarifications. The meaning still
+	  remains the same.
+
+2005-05-11 03:16  Jochen Striepe  <jochen>
+
+	* t-prot.1: LICENSE CHANGE! The meaning remains the same, but the
+	  wording should be a little clearer now.
+
+2005-05-11 03:14  Jochen Striepe  <jochen>
+
+	* t-prot.1: Remove unnecessary text block.
+
+2005-05-11 03:09  Jochen Striepe  <jochen>
+
+	* t-prot: The case-sensitivity of the Content-Type: header (vs.
+	  Content-type:) seems not to be absolutely clear. RFC 1049 should
+	  be obsoleted by RFCs 2045-2049 by now, but to be sure, we will
+	  accept both strings.
+
+2005-05-11 03:04  Jochen Striepe  <jochen>
+
+	* t-prot.1: RFC 822 is no longer important. RFC 2822 should
+	  suffice.
+
+2005-05-11 02:59  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update date string.
+
+2005-05-11 02:58  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix apostrophe.
+
+2005-05-10 15:09  Jochen Striepe  <jochen>
+
+	* contrib/t-prot.sl: Update copyright.
+
+2005-05-09 16:54  Jochen Striepe  <jochen>
+
+	* contrib/t-prot.sl: Make sure users get a hint if they look why
+	  t-prot.sl does not work on their system (just as I did and
+	  wondered what was wrong).
+
+2005-05-08 20:13  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.103.
+
+2005-05-08 20:13  Jochen Striepe  <jochen>
+
+	* t-prot: More regex fixes.
+
+2005-05-08 19:50  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.102.
+
+2005-05-08 19:49  Jochen Striepe  <jochen>
+
+	* t-prot: Many fixes to many regexes, fixing performance issues und
+	  readability.	Some were entirely replaced by faster means.
+
+2005-04-25 18:35  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.101.
+
+2005-04-25 17:49  Jochen Striepe  <jochen>
+
+	* t-prot: We must not forget to remove ad and mailing list footers
+	  within the first MIME/Multipart attachment when processing raw
+	  messages (lacking -M).
+
+2005-04-25 17:29  Jochen Striepe  <jochen>
+
+	* t-prot: Fix a comment.
+
+2005-04-25 17:28  Jochen Striepe  <jochen>
+
+	* t-prot: Mailing list footers (and probably ad footers) were not
+	  detected when processing raw MIME/Multipart messages: We have to
+	  look at the very end of the message, not only at the end of the
+	  first attachment.  Fix this by calling remove_footers() before
+	  dealing with raw multipart attachments.
+
+2005-04-15 16:08  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.100.
+
+2005-04-15 16:07  Jochen Striepe  <jochen>
+
+	* contrib/filter_innd.pl: We don't submit any headers, so use
+	  --body. Use unlink() instead of system(). Mention the temp file
+	  problem.
+
+2005-04-15 16:03  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Add --body to make sure we are not looking for
+	  any headers when there are none in the input.
+
+2005-04-15 15:42  Jochen Striepe  <jochen>
+
+	* t-prot.1: Add some clarifications and missing details.
+
+2005-03-31 21:39  Jochen Striepe  <jochen>
+
+	* contrib/t-prot.sl: Use S-Lang calls popen(), fputs(), and
+	  remove() instead of system() and pipe_article() to reduce
+	  flickering (and for cleaner code). Patch by Gregor Herrman, many
+	  thanks!
+
+2005-03-31 21:20  Jochen Striepe  <jochen>
+
+	* contrib/t-prot.sl: Mention mimedecode as filter for Quoted
+	  Printable. Thanks to Gregor Herrmann.
+
+2005-03-31 21:17  Jochen Striepe  <jochen>
+
+	* contrib/t-prot.sl: Change key bindings: ESC-0 and ESC-1 are
+	  prefixes for other commands, so we should not overwrite those.
+	  Patch by Gregor Herrmann, many thanks!
+
+2005-03-24 23:24  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.99.
+
+2005-03-22 17:10  Jochen Striepe  <jochen>
+
+	* t-prot: Fix false positive for kammquote condition.
+
+2005-03-21 20:30  Jochen Striepe  <jochen>
+
+	* t-prot: Fix missing range check when From: is the last header.
+	  Thanks to Norbert Tretkowski for reporting.
+
+2005-03-01 16:20  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.98.
+
+2005-03-01 16:20  Jochen Striepe  <jochen>
+
+	* t-prot: Gerfried Fuchs pointed out that some locale maintainers
+	  might avoid quote signs, so we check for "%" too when extracting
+	  some locale strings. This still is not *really* bullet-proof,
+	  because e.g. the percent sign might be protected by an escape.
+	  This possibility should be quite unlikely, though, so we stick
+	  with it for now.
+
+2005-02-25 00:34  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix broken URL -- the Learn To Edit Messages Howto is
+	  no longer available at Sven Gucke's old site.
+
+2005-02-24 23:45  Jochen Striepe  <jochen>
+
+	* t-prot: Make esc() superfluous, use \Q and \E instead. Thanks to
+	  Gerfried Fuchs.
+
+2005-02-23 14:07  Jochen Striepe  <jochen>
+
+	* t-prot.1: Remove misleading information about locale names.
+
+2005-02-23 13:39  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.97.
+
+2005-02-23 13:38  Jochen Striepe  <jochen>
+
+	* t-prot: Fix French (and probably many other) locales extraction.
+	  Many thanks to Philippe Berini and Gerfried Fuchs who helped a
+	  great deal with the bug hunt.
+
+2005-02-14 16:02  Jochen Striepe  <jochen>
+
+	* t-prot.1: Remove unnecessary lines.
+
+2005-02-14 16:01  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix copyright time stamp.
+
+2005-02-14 15:19  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.96.
+
+2005-02-14 15:18  Jochen Striepe  <jochen>
+
+	* t-prot: GnuPG locale strings were for v1.2.6, update them to
+	  v1.4.0.
+
+2005-02-14 14:29  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.95. The use of Locale::gettext is quite a
+	  big change, so we consider this a v2.0 pre-release. Please send
+	  any feature requests and bugreports NOW, so we can work on them
+	  before the release of v2.0.
+
+2005-02-14 14:26  Jochen Striepe  <jochen>
+
+	* t-prot.1: Mention the need for Locale::gettext when using
+	  --locale. Update date string.
+
+2005-02-14 14:23  Jochen Striepe  <jochen>
+
+	* t-prot: Following a suggestion by Gerfried Fuchs, make
+	  Locale::gettext fetch the locale strings for us. Big change,
+	  please report any funny behaviour -- thanks!
+
+2005-02-02 14:46  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.49.
+
+2005-02-02 13:22  Jochen Striepe  <jochen>
+
+	* t-prot: Torsten Veller spotted a violation of RFC 2822 in the
+	  pgp() code when dealing with multi-line From: headers. Many
+	  thanks for reporting!
+
+2005-02-01 16:38  Jochen Striepe  <jochen>
+
+	* t-prot: Fix missing Locale value.
+
+2005-02-01 15:15  Jochen Striepe  <jochen>
+
+	* t-prot: Fix another regex.
+
+2005-02-01 14:50  Jochen Striepe  <jochen>
+
+	* t-prot: Fix regexes.
+
+2005-01-08 12:05  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix broken link.
+
+2005-01-07 19:15  Jochen Striepe  <jochen>
+
+	* contrib/t-prot.sl: Now that line breaks by the encoding are
+	  better detected, we will turn on signature checking once again.
+
+2005-01-07 19:14  Jochen Striepe  <jochen>
+
+	* contrib/t-prot.sl: Gregor Herrmann found some problems with
+	  S-Lang variables and provided documentation improvements.
+
+2005-01-01 14:17  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix typo.
+
+2005-01-01 14:14  Jochen Striepe  <jochen>
+
+	* t-prot.1: T-prot's name does not have to be highlighted each time
+	  it occurs.
+
+2005-01-01 14:12  Jochen Striepe  <jochen>
+
+	* t-prot.1: Add note about t-prot fitting to recent mutt and gnupg
+	  versions.
+
+2004-12-31 14:45  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.48.
+
+2004-12-31 14:39  Jochen Striepe  <jochen>
+
+	* t-prot: Fix off-by-one error in TOFU code.
+
+2004-12-31 14:33  Jochen Striepe  <jochen>
+
+	* t-prot: Gnupg-1.4.0 again changes the locales. Sigh.
+
+2004-10-26 00:50  Jochen Striepe  <jochen>
+
+	* t-prot: Fix false positive reported by Gerfried Fuchs. Many
+	  thanks!
+
+2004-10-21 18:16  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.47.
+
+2004-10-21 18:16  Jochen Striepe  <jochen>
+
+	* t-prot: Fix --ftr-ad and --ftr-ml command line parsing and
+	  initialisation. --ftr-ad implicitely sets -a, --ftr-ml
+	  implicitely sets -l. Many thanks to Andre Berger.
+
+2004-10-21 17:13  Jochen Striepe  <jochen>
+
+	* t-prot.1: Make the documentation for -a, -A, and --ftr-ad (resp.
+	  -l, -L, and --ftr-ml) more elaborate. Many thanks to Andre
+	  Berger.
+
+2004-10-21 14:26  Jochen Striepe  <jochen>
+
+	* t-prot.1: Try to explain -a and -l in more detail (without
+	  confusing everyone).
+
+2004-10-21 14:13  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.46.
+
+2004-10-10 23:10  Jochen Striepe  <jochen>
+
+	* contrib/t-prot.sl: Remove -S command line option as line counts
+	  get wrong with quoted-printable (which gets more and more widely
+	  used).
+
+2004-10-10 22:47  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Remove the groups flag within --check: This is
+	  done easier inside filter_innd.pl (where it is actually
+	  implemented already).
+
+2004-10-10 22:43  Jochen Striepe  <jochen>
+
+	* t-prot: Realign global vars into three categories: command-line
+	  switches, mutt locales, gnupg locales. This should be much more
+	  readable.
+
+2004-10-10 22:27  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix typo. Update date string.
+
+2004-10-10 22:26  Jochen Striepe  <jochen>
+
+	* contrib/filter_innd.pl: Reject full quotes as well.
+
+2004-10-10 21:50  Jochen Striepe  <jochen>
+
+	* t-prot: Performance fix.
+
+2004-10-10 21:47  Jochen Striepe  <jochen>
+
+	* contrib/filter_innd.pl: Update comment.
+
+2004-10-10 21:28  Jochen Striepe  <jochen>
+
+	* t-prot: Fix --check flags parsing to be stricter.
+
+2004-10-10 21:22  Jochen Striepe  <jochen>
+
+	* t-prot: Fix --check flags parsing.
+
+2004-10-09 12:17  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.45.
+
+2004-10-09 12:08  Jochen Striepe  <jochen>
+
+	* t-prot: Check for empty footer files before processing them. Many
+	  thanks to Markus Hubig.
+
+2004-09-28 13:19  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.44.
+
+2004-09-28 13:19  Jochen Striepe  <jochen>
+
+	* t-prot: Fix detection of MS-style TOFU within PGP signed
+	  messages.  Many thanks to Gerfried Fuchs for reporting.
+
+2004-09-27 19:45  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update time stamp.
+
+2004-09-27 19:40  Jochen Striepe  <jochen>
+
+	* t-prot.1, contrib/filter_innd.pl: Add credits to Martin Dietze.
+
+2004-09-27 19:23  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.43.
+
+2004-09-27 19:22  Jochen Striepe  <jochen>
+
+	* t-prot: Fix MS-style TOFU removal for attachments when invoked
+	  from mutt.  Many thanks to Gerfried Fuchs.
+
+2004-09-27 19:05  Jochen Striepe  <jochen>
+
+	* t-prot: Fix typo, small performance enhancement.
+
+2004-09-27 17:27  Jochen Striepe  <jochen>
+
+	* t-prot: Minor cleanup.
+
+2004-09-20 19:02  Jochen Striepe  <jochen>
+
+	* contrib/filter_innd.pl: New file.
+
+2004-09-20 19:01  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Add INN2 filtering aids. New command line
+	  switch --check.
+
+	  Release as v1.42.
+
+2004-09-20 16:13  Jochen Striepe  <jochen>
+
+	* t-prot: Website http://learn.to/edit_messages/ is no longer
+	  available.
+
+2004-08-28 13:50  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.41.
+
+2004-08-28 13:42  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Make t-prot use gnupg's locales as in
+	  gpg-1.2.6.
+
+2004-08-07 18:57  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update Copyright date.
+
+2004-08-07 18:34  Jochen Striepe  <jochen>
+
+	* t-prot: Fix last changes so attachments are separated by at least
+	  one empty line (as done in the pgp code as well).
+
+2004-08-07 17:52  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.40.
+
+2004-08-07 17:51  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Add new option --ms-smart. Right now only
+	  special pgp treatment is included (this fixes the behaviour when
+	  there is a clear text pgp signed message embedded in some MS
+	  style TOFU).
+
+	  This should work fine, but you never know what crap Outlook users
+	  will send.  So please give feedback if the results are not as
+	  they should be.
+
+2004-08-07 15:37  Jochen Striepe  <jochen>
+
+	* t-prot.1: Remove "require" line note. Update date string.
+
+2004-08-07 15:20  Jochen Striepe  <jochen>
+
+	* t-prot: More checks on command line correctness.
+
+2004-08-07 14:58  Jochen Striepe  <jochen>
+
+	* t-prot: Fix typo introduced with last update.
+
+2004-08-07 14:48  Jochen Striepe  <jochen>
+
+	* t-prot: Fix "require" statement to match the code.
+
+2004-07-31 13:41  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.39.
+
+2004-07-31 13:10  Jochen Striepe  <jochen>
+
+	* t-prot.1: Reflect locale changes in gnupg-1.2.5, update date
+	  string.
+
+2004-07-31 12:41  Jochen Striepe  <jochen>
+
+	* t-prot: Fix "be" gnupg locales.
+
+	  Update locales to newly released gnupg-1.2.5 (and be incompatible
+	  to gnupg-1.2.4 and earlier once again, *sigh* -- however, that's
+	  the price for not simply setting the LC vars to "C"...).
+
+2004-07-17 15:28  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Add option to have no output file.
+
+2004-04-25 03:51  Jochen Striepe  <jochen>
+
+	* t-prot.1: Add warning regarding --pgp-move-vrfy and signals to
+	  gpg.
+
+2004-03-02 17:57  Jochen Striepe  <jochen>
+
+	* t-prot: Comment updated: Reflect the fact that no locales have
+	  changed in mutt-1.4.2.1.
+
+2004-03-02 16:54  Jochen Striepe  <jochen>
+
+	* muttrc.t-prot, t-prot.sl: Moved to contrib/.
+
+2004-02-11 17:05  Jochen Striepe  <jochen>
+
+	* t-prot: Comment updated: Reflect the fact that no locales have
+	  changed in mutt-1.4.2.
+
+2004-01-31 03:06  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix copyright date.
+
+2004-01-30 16:20  Jochen Striepe  <jochen>
+
+	* t-prot.1: Change --ftr to --ftr-ad, add --ftr-ml.
+
+2004-01-30 16:08  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.38.
+
+2004-01-30 15:38  Jochen Striepe  <jochen>
+
+	* t-prot: Change --ftr option to --ftr-ad. Add --ftr-ml option.
+	  Many thanks to Christian Wach for pointing at the problem.
+
+2004-01-30 15:31  Jochen Striepe  <jochen>
+
+	* t-prot: Small performance fix in footer treatment.
+
+2004-01-21 14:46  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.37.
+
+2004-01-21 14:45  Jochen Striepe  <jochen>
+
+	* t-prot: Fix processing if first attachment is of type
+	  application/pgp.
+
+2004-01-21 14:39  Jochen Striepe  <jochen>
+
+	* t-prot: Small performance fix.
+
+2003-12-29 18:06  Jochen Striepe  <jochen>
+
+	* t-prot: Release as 1.36.
+
+2003-12-29 18:06  Jochen Striepe  <jochen>
+
+	* t-prot: Fix Kammquote behaviour for words divided by a hyphen.
+
+2003-12-29 16:33  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update date string.
+
+2003-12-29 16:09  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Update locales for gnupg-1.2.4.
+
+2003-12-29 13:59  Jochen Striepe  <jochen>
+
+	* t-prot: Mutt-1.4.1 has no support for SSL, so we may drop it
+	  altogether. Mutt developer versions are handled in patches.
+
+2003-11-22 03:35  Jochen Striepe  <jochen>
+
+	* t-prot: Fix comments for gpg and mutt locales.
+
+2003-11-20 15:51  Jochen Striepe  <jochen>
+
+	* t-prot: Fixed --pgp-move-vrf: Obviously, gpg output should not be
+	  interpreted as successful if a bug showed up (boy, I never saw
+	  this with good old gnupg-1.0.7).
+
+	  Released as v1.35.
+
+2003-11-19 22:05  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.34.
+
+2003-11-19 21:58  Jochen Striepe  <jochen>
+
+	* t-prot: Cosmetics.
+
+2003-11-19 21:45  Jochen Striepe  <jochen>
+
+	* t-prot.1: Cosmetics.
+
+2003-11-19 21:43  Jochen Striepe  <jochen>
+
+	* t-prot.1: Change time stamp.
+
+2003-11-19 21:43  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update man page to reflect last changes.
+
+2003-11-19 21:41  Jochen Striepe  <jochen>
+
+	* t-prot: Update gpg's locales to gpg-1.2.3. Support for
+	  gpg-1.0.7's locales is available as a patch.
+
+2003-11-19 21:11  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update man page to reflect last changes.
+
+2003-11-19 21:10  Jochen Striepe  <jochen>
+
+	* t-prot: Removed option --mutt-ver for sanity reasons. Special
+	  adapations for mutt developer versions will be available as a
+	  patch.
+
+2003-09-10 13:32  Jochen Striepe  <jochen>
+
+	* t-prot.1: Make clear t-prot.sl is just an example implementation.
+	  Update date string.
+
+2003-09-10 13:30  Jochen Striepe  <jochen>
+
+	* t-prot.sl, contrib/t-prot.sl: Additional comments.
+
+2003-08-11 16:35  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.33.
+
+2003-08-11 16:35  Jochen Striepe  <jochen>
+
+	* t-prot.1: Improve description for --mutt-ver.
+
+2003-08-11 16:33  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update date string.
+
+2003-08-11 16:32  Jochen Striepe  <jochen>
+
+	* t-prot: Clean up locales stuff.
+
+2003-08-11 16:19  Jochen Striepe  <jochen>
+
+	* t-prot: Fix parsing order with --mutt-ver and --locale.
+
+2003-08-11 16:05  Jochen Striepe  <jochen>
+
+	* t-prot.1: Add description for --mutt-ver.
+
+2003-08-11 16:00  Jochen Striepe  <jochen>
+
+	* t-prot: Add some locale that changed in mutt-1.5.4 (and made pgp
+	  block detection fail). New parameter --mutt-ver. Many thanks to
+	  Gerfried Fuchs.
+
+	  Release as v1.32.
+
+2003-08-11 15:41  Jochen Striepe  <jochen>
+
+	* t-prot: Simplify regex introduced in last update.
+
+2003-08-10 00:22  Jochen Striepe  <jochen>
+
+	* t-prot: Fix some cases where SIGINT was not detected for pgp
+	  verification from within mutt.
+
+	  Release as v1.31.
+
+2003-07-21 15:12  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.30.
+
+2003-07-21 15:12  Jochen Striepe  <jochen>
+
+	* t-prot: Recognize LC_MESSAGES for locales. Thanks to Gerfried
+	  Fuchs.
+
+2003-07-15 15:39  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.29.
+
+2003-07-15 15:38  Jochen Striepe  <jochen>
+
+	* t-prot: Fix email adress verification inside pgp(). Fix locale
+	  detection.
+
+2003-07-09 23:11  Jochen Striepe  <jochen>
+
+	* t-prot: Use the environment variable LC_ALL (and if this fails,
+	  LANG) to determine a reasonable locale default. Suggested by
+	  Michael Olbrich.
+
+	  Release as v1.28.
+
+2003-06-25 01:52  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.27.
+
+2003-06-25 01:52  Jochen Striepe  <jochen>
+
+	* t-prot: Getting some rare multipart message from mutt, t-prot got
+	  locked into a probably endless 100% CPU consuming loop (see msgid
+	  <20030624071950.GA24479@sil.at>).  This was a DoS and therefore a
+	  security problem if you use t-prot in some automated setup. This
+	  bug was only triggered when used with -Mmutt. BTW, fixing this
+	  should also increase performance when processing multipart
+	  messages with -Mmutt.
+
+	  Many many thanks to Gerfried Fuchs for alerting us and pointing
+	  out the DoS character of the bug (though most people might not
+	  use mutt to do fully automated email processing).
+
+2003-06-25 00:44  Jochen Striepe  <jochen>
+
+	* t-prot: Fix treatment of forwarded messages by Opera7.
+
+2003-06-23 16:10  Jochen Striepe  <jochen>
+
+	* t-prot.sl, contrib/t-prot.sl: Quoted-printable treatment
+	  (hopefully this will be obsolet with S-Lang-2.0) and some minor
+	  fixes.
+
+2003-06-23 15:20  Jochen Striepe  <jochen>
+
+	* t-prot.sl, contrib/t-prot.sl: Add missing semicolon.
+
+2003-06-23 14:58  Jochen Striepe  <jochen>
+
+	* t-prot.sl, contrib/t-prot.sl: Fix error treatment.
+
+2003-06-23 01:47  Jochen Striepe  <jochen>
+
+	* t-prot.sl, contrib/t-prot.sl: Make the tmp dir configurable,
+	  correct some plain wrong comments, and add some more comments.
+
+2003-06-23 00:57  Jochen Striepe  <jochen>
+
+	* t-prot.sl, contrib/t-prot.sl: Make the S-Lang example macro more
+	  configurable (thanks to Gerfried Fuchs for some suggestions) and
+	  provide a possibility to toggle filtering on/off from within slrn
+	  (thanks to Michael Prokop for feedback).
+
+2003-06-16 00:53  Jochen Striepe  <jochen>
+
+	* t-prot.1, t-prot.sl, contrib/t-prot.sl: Add some comments to
+	  t-prot.sl and update the man page to mention the S-Lang example
+	  macro.
+
+2003-06-16 00:33  Jochen Striepe  <jochen>
+
+	* t-prot.sl, contrib/t-prot.sl: Added S-Lang macro to use t-prot
+	  from within slrn(1).
+
+2003-05-04 14:40  Jochen Striepe  <jochen>
+
+	* t-prot: Fix handling of empty lines in traditional TOFU code:
+	  TOFU broken into parts by empty lines will be detected correctly
+	  now, empty lines will not be deleted if there is no TOFU at all.
+
+	  Release as v1.26.
+
+2003-04-23 16:50  Jochen Striepe  <jochen>
+
+	* t-prot: Finally fix thrown away verbatim information with
+	  --pgp-move-vrf and -k (hope you had a happy Easter too). Many
+	  thanks to Gerfried Fuchs.
+
+	  Release as v1.25.
+
+2003-04-03 15:26  Jochen Striepe  <jochen>
+
+	* t-prot: Regex performance fixes.
+
+2003-03-20 03:09  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: New locale in mutt-1.4.1: bg.
+
+	  Release as v1.24.
+
+2003-03-18 17:08  Jochen Striepe  <devel>
+
+	* t-prot: Clean up $0 usage.
+
+2003-03-08 18:05  Jochen Striepe  <jochen>
+
+	* t-prot: Pure cosmetics.
+
+2003-03-08 17:48  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.23.
+
+2003-03-08 17:43  Jochen Striepe  <jochen>
+
+	* t-prot: Fix another typo.
+
+2003-03-08 17:40  Jochen Striepe  <devel>
+
+	* t-prot: Fix typo in last commit.
+
+2003-03-08 17:37  Jochen Striepe  <devel>
+
+	* t-prot: Add a handler for SIGINT -- pgp() has to know if we got
+	  an interrupt.  Many thanks to Gerfried Fuchs.
+
+2003-03-08 03:24  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Add a workaround for old mutt versions using
+	  the pagerfilter patch. Do not activate --lax-security unless you
+	  really know what you are doing.
+
+2003-03-07 15:19  Jochen Striepe  <jochen>
+
+	* t-prot: Ignore SIGINTs when called from within mutt. You probably
+	  want the chance to stop PGP verification and still have the
+	  message displayed. Idea by Peter Palfrader, suggested for t-prot
+	  by Gerfried Fuchs. Thanks, great idea!
+
+	  Release as v1.22.
+
+2003-03-05 18:26  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.21.
+
+2003-03-05 18:15  Jochen Striepe  <jochen>
+
+	* t-prot: Various performance fixes.
+
+2003-03-05 18:02  Jochen Striepe  <jochen>
+
+	* t-prot: Another performance fix.
+
+2003-03-05 17:59  Jochen Striepe  <jochen>
+
+	* t-prot: Fix multipart boundary detection.
+
+2003-03-05 17:53  Jochen Striepe  <jochen>
+
+	* t-prot: Another performance fix in pgp().
+
+2003-03-05 17:51  Jochen Striepe  <jochen>
+
+	* t-prot: Fix bad typo.
+
+2003-03-05 17:35  Jochen Striepe  <jochen>
+
+	* t-prot: Performance improvements in pgp().
+
+2003-03-05 17:14  Jochen Striepe  <jochen>
+
+	* t-prot: Make kammquote code more efficient.
+
+2003-03-05 17:09  Jochen Striepe  <jochen>
+
+	* t-prot: Fix kammquote condition.
+
+2003-03-05 16:54  Jochen Striepe  <jochen>
+
+	* t-prot: Some cosmetics, no code changes.
+
+2003-03-01 18:49  Jochen Striepe  <devel>
+
+	* t-prot: Formatting: Replace tabs with spaces.
+
+2003-03-01 18:46  Jochen Striepe  <devel>
+
+	* t-prot: Add some comments.
+
+2003-02-26 23:56  Jochen Striepe  <devel>
+
+	* t-prot.1: Reflect the fact that world has not stopped spinning
+	  after RFC 822 (so far, at least). Mention RFCs 2045, 2046, 2049,
+	  and 2822. Thanks to Thomas Bliesener for noticing.
+
+2003-02-26 23:32  Jochen Striepe  <devel>
+
+	* t-prot.1: Add an example for bouncing TOFU'ed messages using
+	  sendmail(8). Add a note that -m/-t is needed for successful use
+	  of -p. Thanks to Thomas Bliesener.
+
+2003-02-19 23:05  Jochen Striepe  <jochen>
+
+	* t-prot: Release as v1.20.
+
+2003-02-19 22:53  Jochen Striepe  <jochen>
+
+	* t-prot: Fix missing verbatim vals when moving gpg output.
+
+2003-02-17 16:00  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update Copyright date.
+
+2003-02-17 14:53  Jochen Striepe  <jochen>
+
+	* t-prot: Fix moving gpg output for signatures by expired keys.
+
+	  Release v1.19.
+
+2003-02-17 14:35  Jochen Striepe  <jochen>
+
+	* t-prot: Fix sender address for --pgp-short.
+
+2003-02-17 14:02  Jochen Striepe  <jochen>
+
+	* t-prot: Remove unnecessary variable in write_msg().
+
+2003-02-17 13:59  Jochen Striepe  <jochen>
+
+	* t-prot: Regex performance improvements.
+
+2003-02-17 02:59  Jochen Striepe  <jochen>
+
+	* t-prot: Fix mutt-pgp code: if we have nested signed/encrypted
+	  mime parts, we must take care that all gpg output is printed.
+
+	  Release v1.18.
+
+2003-02-17 01:08  Jochen Striepe  <jochen>
+
+	* t-prot: Make t-prot compile again on perl-5.6.1 (many thanks to
+	  Brian Medley).
+
+	  Release v1.17.
+
+2003-02-14 15:50  Jochen Striepe  <jochen>
+
+	* t-prot: Fix missing check.
+
+2003-02-14 15:42  Jochen Striepe  <jochen>
+
+	* t-prot: Fix really annoying footer unflexibility. Now empty lines
+	  on the bottom of a message are ignored.
+
+	  Release v1.16.
+
+2003-02-11 22:06  Jochen Striepe  <jochen>
+
+	* t-prot: Fix --bigq for big quotes that go down to one of the two
+	  last lines.
+
+	  Release v1.15.
+
+2003-02-11 14:49  Jochen Striepe  <jochen>
+
+	* t-prot: Fix ad footers within pgp signed stuff.
+
+2003-02-11 14:42  Jochen Striepe  <jochen>
+
+	* t-prot: Fix trailing empty lines ("match anything") in ad footer
+	  files.
+
+	  Release v1.14.
+
+2003-02-09 21:34  Jochen Striepe  <devel>
+
+	* t-prot: Add support for mutt-1.5.x's OpenSSL output for S/MIME.
+	  Thanks to Michael Loeffler.
+
+	  Clean up some regexps for mutt's separators (should give better
+	  performance now).
+
+	  Release v1.13.
+
+2003-02-08 19:19  Jochen Striepe  <devel>
+
+	* t-prot, t-prot.1: Integrate the footers patch to allow aggressive
+	  ad footer matching.
+
+	  Release v1.12.
+
+2003-02-08 18:44  Jochen Striepe  <devel>
+
+	* t-prot: Use constants where possible.
+
+2003-02-07 20:16  Jochen Striepe  <jochen>
+
+	* t-prot: Fix two bugs in the Big Kammquote Condition. Using -k
+	  should work again.
+
+	  Release v1.11.
+
+2003-02-07 19:26  Jochen Striepe  <devel>
+
+	* t-prot: Fix another terminal color sequence.
+
+2003-02-07 17:29  Jochen Striepe  <jochen>
+
+	* t-prot.1: List contributors in alphabetical order.
+
+2003-02-07 17:00  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update date string.
+
+2003-02-07 16:55  Jochen Striepe  <jochen>
+
+	* t-prot.1: Add a note to the BUGS section about possible perl
+	  compiler errors with not-up-to-date perl installations.
+
+2003-02-07 12:51  Jochen Striepe  <jochen>
+
+	* t-prot: Make --pgp-move-vrf work for BAD signatures too (many
+	  thanks to Gerfried Fuchs).
+
+	  Release v1.10.
+
+2003-02-06 17:11  Jochen Striepe  <jochen>
+
+	* t-prot: Last change broke attachment detection for -Mmutt.
+
+2003-02-06 16:37  Jochen Striepe  <jochen>
+
+	* t-prot: Fix mutt terminal color sequences. Fix false positive for
+	  overlong signatures with mutt-1.5.3 (MANY MANY thanks to Gerfried
+	  Fuchs for reporting the bug and providing vital data!).
+
+	  Release v1.9.
+
+2003-01-29 04:24  Jochen Striepe  <devel>
+
+	* t-prot.1: Update date string.
+
+2003-01-29 04:23  Jochen Striepe  <devel>
+
+	* t-prot.1: Fix spellling error.
+
+2003-01-28 13:00  Jochen Striepe  <jochen>
+
+	* t-prot: Make -h work again.
+
+	  Version bump to 1.8.
+
+2002-12-29 04:52  Jochen Striepe  <jochen>
+
+	* muttrc.t-prot, t-prot, t-prot.1, contrib/muttrc.t-prot: Enable
+	  spamassassin workaround. Update man page and sample config file
+	  accordingly.
+
+	  Correct some speling errors in the man page.
+
+	  Bump to v1.7.
+
+2002-12-11 19:53  Jochen Striepe  <jochen>
+
+	* t-prot: Mutt content type fix.
+
+	  Version bump to 1.6.
+
+2002-12-11 02:46  Jochen Striepe  <jochen>
+
+	* t-prot: Improve M$ style TOFU heuristics.
+
+	  Bump to v1.5.
+
+2002-12-08 23:45  Jochen Striepe  <jochen>
+
+	* t-prot: Remove unused else.
+
+2002-12-06 17:21  Jochen Striepe  <jochen>
+
+	* t-prot: Fix treatment of pgp uids without email adress for
+	  --pgp-move. Many thanks to Gerfried Fuchs for noticing.
+
+	  Small performance fix for --pgp-move-vrf.
+
+	  Bump to v1.4.
+
+2002-12-04 21:45  Jochen Striepe  <jochen>
+
+	* t-prot: Fix --pgp-short to be overzealous with gpg encryption
+	  output.
+
+	  Version bump to 1.3.
+
+2002-12-04 10:06  Jochen Striepe  <jochen>
+
+	* t-prot.1: Another --locale fix.
+
+2002-12-04 10:01  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update --locale description.
+
+2002-12-03 19:20  Jochen Striepe  <jochen>
+
+	* t-prot: Add internationalization for --pgp-move-vrf from
+	  gnupg-1.0.7's po files.  Should work with gnupg-1.2.x as well.
+
+	  Bump to v1.2.
+
+2002-12-02 22:04  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update man page date string.
+
+2002-12-02 22:03  Jochen Striepe  <jochen>
+
+	* t-prot.1: Make last man page update more complete.
+
+2002-12-02 22:00  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Add an option to move only positive pgp
+	  verification output (this works for English gpg-1.0.7 right now
+	  -- no internationalization, no pgp.com support). Thanks to Markus
+	  Hubig for suggesting.
+
+2002-11-11 03:59  Jochen Striepe  <jochen>
+
+	* t-prot: Version 1.0.
+
+2002-11-09 03:22  Jochen Striepe  <jochen>
+
+	* t-prot.1: Man page update.
+
+2002-11-09 02:53  Jochen Striepe  <jochen>
+
+	* t-prot: Adding comment for pgp().
+
+2002-11-05 14:29  Jochen Striepe  <jochen>
+
+	* t-prot: Fix a race condition introduced in 0.70. Many many thanks
+	  to Wichert Akkerman and Gerfried Fuchs.
+
+	  Bump to v0.94.
+
+2002-11-04 20:01  Jochen Striepe  <jochen>
+
+	* t-prot: Fix typo from last submission.
+
+	  Bump to v0.93.
+
+2002-11-04 19:49  Jochen Striepe  <jochen>
+
+	* t-prot: Markus Hubig noticed a bug in the kammquote condition
+	  that ate the first (empty) line of pgp signed data when using
+	  t-prot within mutt. Many thanks!
+
+	  Version bump to 0.92.
+
+2002-11-02 17:35  Jochen Striepe  <jochen>
+
+	* t-prot: Replace all die()s with exit()s and appropriate exit
+	  codes for better interaction with MTAs.
+
+	  Bump to v0.91.
+
+2002-11-02 17:08  Jochen Striepe  <jochen>
+
+	* t-prot: Minor changes.
+
+2002-11-02 02:05  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update man page modification stamp.
+
+2002-11-01 19:30  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Merge the pgp hack after solving the last
+	  pending bug report (thanks to Markus Hubig). Update the man page
+	  to represent changes.
+
+	  Huge version jump to v0.90: this is a release candidate for v1.0,
+	  every main feature should work fine by now. Please tell me *now*
+	  if something does not work for you (or if you have a major
+	  feature request that should be considered before v1.0).
+
+2002-10-31 19:29  Jochen Striepe  <jochen>
+
+	* t-prot: Eye candy: People using vim with a tabwidth!=4 should see
+	  the source with proper alignment now.
+
+2002-10-31 15:17  Jochen Striepe  <jochen>
+
+	* t-prot: T-prot would cheerfully create an output file without
+	  checking to see if it was about to write to a symlink or a named
+	  pipe. If a user used t-prot to write data into open shared
+	  directories, such as /tmp, this vulnerability could be used by a
+	  local attacker to overwrite files or lead to privilege
+	  escalation.
+
+	  Bump to v0.70.
+
+2002-10-22 18:42  Jochen Striepe  <jochen>
+
+	* t-prot: Add French M$ tofu detection (many thanks to Mikael
+	  Berthe for suggesting).
+
+2002-10-19 19:22  Jochen Striepe  <jochen>
+
+	* t-prot: Using any of --kminl, --kmaxl, or --kdiff implicitely
+	  activates -k.
+
+	  Specifying an empty string for -i or -o is no longer tolerated.
+
+	  Version bump to 0.69.
+
+2002-10-19 18:15  Jochen Striepe  <jochen>
+
+	* t-prot: Support for Dutch(?) M$-style TOFU markers.
+
+2002-09-14 07:24  Jochen Striepe  <jochen>
+
+	* t-prot: Fixed thinko in M$ TOFU/Forwarding treatment.
+
+2002-09-14 07:10  Jochen Striepe  <jochen>
+
+	* t-prot: Johan Almqvist found another bug, this time false
+	  positives with some M$ MUA's forwarded messages.
+
+2002-09-12 14:59  Jochen Striepe  <jochen>
+
+	* t-prot: Add swedish M$ TOFU detection. Thanks to Johan Almqvist
+	  for noticing. Bumped to v0.68.
+
+2002-07-26 16:03  Jochen Striepe  <jochen>
+
+	* t-prot: Eye candy: add vim-6.x compliant folding comments.
+
+2002-07-09 16:07  Jochen Striepe  <jochen>
+
+	* t-prot: Try better heuristics for M$ style TOFU. Gerfried Fuchs
+	  had some very reasonable ideas
+	  (<20020705143319.GH11482@asgard.pte.at>, 2002-07-05).  We now
+	  tolerate MS style TOFU if there is no text above.
+
+	  Version bump to v0.67.
+
+2002-06-27 23:37  Jochen Striepe  <jochen>
+
+	* t-prot: Fix unbelievable stupid typo introduced in the last
+	  commit.
+
+	  Bump to v0.66.
+
+2002-06-27 21:54  Jochen Striepe  <jochen>
+
+	* t-prot: Fix detection of mailing list footers in attachments
+	  within attachments.
+
+	  Bump to v0.65.
+
+2002-06-27 20:16  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Fix thinko where to search for mailing list
+	  footers, bug reported by Gerfried Fuchs (many thanks!).
+
+	  Update manpage to make clear -Mmutt is *required* when t-prot is
+	  called from within mutt.
+
+	  Bump to v0.64.
+
+2002-06-18 03:45  Jochen Striepe  <jochen>
+
+	* t-prot: Another tweak on the kammquote condition.
+
+2002-06-16 14:32  Jochen Striepe  <jochen>
+
+	* t-prot: Fixed the line count header with -Mmutt and attachments,
+	  pgp signatures and encryption.
+
+2002-06-15 19:18  Jochen Striepe  <jochen>
+
+	* t-prot: Another tweak on the kammquote condition.
+
+2002-06-08 21:50  Jochen Striepe  <jochen>
+
+	* muttrc.t-prot, contrib/muttrc.t-prot: Add warning comment about
+	  required mutt version.
+
+2002-06-02 09:51  Jochen Striepe  <jochen>
+
+	* t-prot: Fixed some typos.
+
+2002-06-02 09:12  Jochen Striepe  <jochen>
+
+	* t-prot.1: Updated manpage. The Kammquote problem should be mostly
+	  solved by now.
+
+2002-06-02 04:12  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: New option --sigsmax for fine-tuning the
+	  tolerated number of signatures.  Manpage updated. Version bump to
+	  v0.61.
+
+2002-05-30 13:24  Jochen Striepe  <jochen>
+
+	* t-prot: Update help to reflect -p changes.
+
+2002-05-30 13:16  Jochen Striepe  <jochen>
+
+	* t-prot: Bump to v0.60.
+
+2002-05-30 12:45  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update manpage for new behaviour of -p.
+
+2002-05-10 04:18  Jochen Striepe  <jochen>
+
+	* t-prot: Add some quick hack to make t-prot an easy drop-in for
+	  spamassassin: the parameter for -p is optionally right now. If
+	  there is none supplied, there is no mail sent, of course.
+
+2002-05-03 04:02  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix typo.
+
+2002-05-03 03:56  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update man page date.
+
+2002-05-03 03:55  Jochen Striepe  <jochen>
+
+	* t-prot.1: Man page fixes and updates.
+
+2002-04-30 19:23  Jochen Striepe  <jochen>
+
+	* t-prot: Improve the comment on the Kammquote condition.
+
+2002-04-30 19:16  Jochen Striepe  <jochen>
+
+	* t-prot: Further tweak on the Kammquote condition. Should really
+	  do The Right Thing by now.
+
+2002-04-24 16:08  Jochen Striepe  <jochen>
+
+	* t-prot: Performance tweak in debigq().
+
+2002-04-24 15:33  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Added an option to remove the bigger part of
+	  huge blocks of quoted lines (--bigq). Updated the man page
+	  accordingly.
+
+	  Updated the man page's contributors text.
+
+	  Bump to v0.58.
+
+2002-04-20 23:32  Jochen Striepe  <jochen>
+
+	* t-prot: Just insert one space when joining lines in decomb().
+
+2002-04-20 17:37  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update man page to reflect upon new options --kminl,
+	  --kmaxl, and --kdiff.
+
+2002-04-20 17:18  Jochen Striepe  <jochen>
+
+	* t-prot: Some more tweaks to the Kammquote condition. Add some
+	  command line switches to make behaviour a little more flexible.
+
+	  Bump to v0.57.
+
+2002-04-20 13:10  Jochen Striepe  <jochen>
+
+	* t-prot: Another small tweak in the Kammquoting condition.
+
+2002-04-20 13:03  Jochen Striepe  <jochen>
+
+	* t-prot: Another small tweak in the Kammquote condition.
+
+2002-04-20 12:58  Jochen Striepe  <jochen>
+
+	* t-prot: Make the Kammquote condition a little pickier.
+
+2002-04-20 04:48  Jochen Striepe  <jochen>
+
+	* t-prot.1: Add description of the anti Kammquoting option.
+
+2002-04-20 04:28  Jochen Striepe  <jochen>
+
+	* t-prot: Added an option to fix those zig-zag shaped quotings,
+	  well-known to German users as "Kammquoting".
+
+	  Lines with verbatim statements (#v+/-) itselves are now verbatim
+	  by definition, so they won't be cleaned away.
+
+	  Bumped to v0.56.
+
+2002-04-19 00:51  Jochen Striepe  <jochen>
+
+	* t-prot: Clean up revision number a bit.
+
+2002-04-11 07:14  Jochen Striepe  <jochen>
+
+	* t-prot: Just catch the last signature if there are more.
+
+2002-04-11 06:46  Jochen Striepe  <jochen>
+
+	* t-prot: Hugo Haas reported that t-prot did not detect TOFU if
+	  there is an overlong signature and no -S on the command line.
+	  Though this was intended behaviour, this is changed: by now
+	  signatures are always interpreted as such, so the text before can
+	  be parsed properly.
+
+2002-03-29 02:46  Jochen Striepe  <jochen>
+
+	* t-prot.1: Add description for --locale=LOCALE.
+
+2002-03-29 02:15  Jochen Striepe  <jochen>
+
+	* t-prot: Add option to treat mutt(1)'s locales correctly. Bump to
+	  v0.55.
+
+2002-03-23 11:47  Jochen Striepe  <jochen>
+
+	* t-prot: Fix typo.
+
+2002-03-22 12:38  Jochen Striepe  <jochen>
+
+	* t-prot.1: Add ghw to the IDEAS AND INSPIRATION section.
+
+2002-03-21 23:26  Jochen Striepe  <jochen>
+
+	* t-prot: Bump to 0.54.
+
+2002-03-21 14:16  Jochen Striepe  <jochen>
+
+	* t-prot: More cleanups in the multipart code.
+
+2002-03-21 13:53  Jochen Striepe  <jochen>
+
+	* t-prot: Fix comment in the mutt specific multipart code.
+
+2002-03-21 13:27  Jochen Striepe  <jochen>
+
+	* t-prot: Fixed assumption in the mutt-specific code that the first
+	  attachment always would be text/plain containing the actual
+	  message text.
+
+2002-03-20 23:58  Jochen Striepe  <jochen>
+
+	* t-prot: Fix some false positives in footers and multipart code.
+
+2002-03-20 18:02  Jochen Striepe  <jochen>
+
+	* t-prot: More cleanups and performance improvements. Fixed tofu
+	  deletion when diff appended to signature. Fixed broken detection
+	  of mutt(1)'s mime/pgp output.  Bumped to 0.53.
+
+2002-03-20 16:12  Jochen Striepe  <jochen>
+
+	* t-prot: Make mime/multipart parts with type=message/rfc822 being
+	  processed if the message has been processed by mutt(1) before.
+
+2002-03-20 14:16  Jochen Striepe  <jochen>
+
+	* t-prot: Another HUGE cleanup.
+
+2002-03-20 02:56  Jochen Striepe  <jochen>
+
+	* t-prot: Major cleanup. Bump to 0.52.
+
+2002-03-19 15:16  Jochen Striepe  <jochen>
+
+	* t-prot: Fixed some bugs in the multipart code. Bumped version to
+	  0.51.
+
+2002-03-19 13:42  Jochen Striepe  <jochen>
+
+	* t-prot.1: Add note describing the complicated and confusing line
+	  count thingie when deleting an overlong signature.
+
+2002-03-19 13:38  Jochen Striepe  <jochen>
+
+	* t-prot: Correct line count in snipped-overlong-sig message.
+
+2002-03-18 20:19  Jochen Striepe  <jochen>
+
+	* muttrc.t-prot, t-prot, t-prot.1, contrib/muttrc.t-prot: Add new
+	  options (-a and -A=dir) to get rid of those annoying hotmail
+	  advertisements appended to messages from people using gratis
+	  email providers. Update manpage and muttrc sample.
+
+	  Add non-usascii-problem to TROUBLESHOOTING section of the man
+	  page.
+
+	  Bump to v0.50.
+
+2002-03-18 16:49  Jochen Striepe  <jochen>
+
+	* t-prot: Fix the line count header. Bump to v0.49.
+
+2002-03-16 01:01  Jochen Striepe  <jochen>
+
+	* t-prot.1: Minor fix.
+
+2002-03-16 00:58  Jochen Striepe  <jochen>
+
+	* t-prot.1: Minor cleanup.
+
+2002-03-15 02:48  Jochen Striepe  <jochen>
+
+	* t-prot: Fix variables initialisation.
+
+2002-03-14 23:21  Jochen Striepe  <jochen>
+
+	* t-prot: Fix a bug in the multipart code. Bump to v0.48.
+
+2002-03-13 09:07  Jochen Striepe  <jochen>
+
+	* t-prot.1: Add some explanation for the verbatim instruction to
+	  the troubleshooting section.
+
+2002-03-13 08:52  Jochen Striepe  <jochen>
+
+	* t-prot: Make verbatim instructions work for everything except
+	  mailing list footers.  Bump to v0.47.
+
+2002-03-13 02:19  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fixed typo.
+
+2002-03-12 18:16  Jochen Striepe  <jochen>
+
+	* t-prot.1: Add TROUBLESHOOTING section.
+
+2002-03-12 17:44  Jochen Striepe  <jochen>
+
+	* t-prot.1: Changed one makro which was overseen last commit.
+
+2002-03-12 17:24  Jochen Striepe  <jochen>
+
+	* t-prot.1: Big man page cleanup.
+
+2002-03-12 16:41  Jochen Striepe  <jochen>
+
+	* t-prot.1: Further improvement of the -L man page text.
+
+2002-03-12 16:39  Jochen Striepe  <jochen>
+
+	* t-prot.1: Improved man page text for -L.
+
+2002-03-12 16:37  Jochen Striepe  <jochen>
+
+	* t-prot.1: Clarify the man page text for -l and -L.
+
+2002-03-12 03:47  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Add the "tolerate diff" option. Bump to v0.46.
+
+2002-03-09 18:18  Jochen Striepe  <jochen>
+
+	* muttrc.t-prot, t-prot, t-prot.1, contrib/muttrc.t-prot: Add
+	  option -M/--mua and try to detect attachments only when
+	  necessary.  Updated man page and muttrc sample. Version bump to
+	  0.45.
+
+2002-03-08 21:29  Jochen Striepe  <jochen>
+
+	* t-prot: Fix an off-by-one error when removing mutt(1)'s
+	  attachments. Credits to Gerfried Fuchs for reporting and locating
+	  the bug.
+
+2002-03-02 03:26  Jochen Striepe  <jochen>
+
+	* t-prot: Some minor cleanups.
+
+2002-03-02 03:18  Jochen Striepe  <jochen>
+
+	* t-prot: Some minor cleanups.
+
+2002-03-01 11:10  Jochen Striepe  <jochen>
+
+	* t-prot: Fixed a missing range check reported by Gerfried Fuchs
+	  with messages only containing the mailing list footer.
+
+2002-02-26 13:20  Jochen Striepe  <jochen>
+
+	* t-prot: Add infrastructure for better debugging.
+
+2002-02-26 12:11  Jochen Striepe  <jochen>
+
+	* muttrc.t-prot, contrib/muttrc.t-prot: Make the muttrc example a
+	  little shorter, and add colors.
+
+2002-02-26 04:05  Jochen Striepe  <jochen>
+
+	* t-prot: Improve empty line handling between body and signature.
+
+2002-02-26 03:50  Jochen Striepe  <jochen>
+
+	* t-prot: Fixed thinko in signature handling. Be more tolerant with
+	  empty lines around signatures and mailing list footers.
+
+	  Version bump to 0.42.
+
+2002-02-25 20:20  Jochen Striepe  <jochen>
+
+	* t-prot: Widened the rexexp for mutt(1)'s attachments a little -
+	  some cases were not caught before.
+
+2002-02-25 19:48  Jochen Striepe  <jochen>
+
+	* t-prot: Gerfried Fuchs found a bug in the signature code (many
+	  thanks!). It was ugly anyway, so that part got a clean rewrite.
+
+	  Bumped version to 0.41.
+
+2002-02-22 16:55  Jochen Striepe  <jochen>
+
+	* t-prot: Another slight performance hit with multipart messages.
+
+2002-02-22 16:36  Jochen Striepe  <jochen>
+
+	* t-prot: Leave only the body of the first multipart message part
+	  for processing, not the headers.
+
+2002-02-22 00:27  Jochen Striepe  <jochen>
+
+	* t-prot.1: Updated the manpage to reflect the fix of the multipart
+	  bug.
+
+2002-02-22 00:24  Jochen Striepe  <jochen>
+
+	* t-prot: Fix no TOFU is detected in multipart messages without
+	  signature and without previous preparation by mutt(1). Now
+	  multipart messages as described in RFC 1341 are detected
+	  properly. Only the first part is processed, and only if it has
+	  the content type "text/plain" or none specified as described in
+	  RFC 1341.
+
+2002-02-20 17:51  Jochen Striepe  <jochen>
+
+	* t-prot: Bump version to 0.39.
+
+2002-02-20 17:50  Jochen Striepe  <jochen>
+
+	* t-prot.1: Updated manpage for long options.
+
+2002-02-18 20:44  Jochen Striepe  <jochen>
+
+	* t-prot.1: Updated credits in manpage.
+
+2002-02-16 01:06  Jochen Striepe  <jochen>
+
+	* muttrc.t-prot, t-prot, contrib/muttrc.t-prot, t-prot.1: Switched
+	  command line system to Getopt::Mixed as recommended by Gerfried
+	  Fuchs. One of the reasons is that now the parameter of the option
+	  '-S' is optionally, what was not cleanly realizeable before. The
+	  opportunity has been used to do a cleanup on some things, too ...
+
+	  Please note that Getopt::Mixed now is mandatory to run t-prot -
+	  you can get it at CPAN. The trade-off seems worthy IMHO - please
+	  drop an email to <t-prot@tolot.escape.de> if you do not think so,
+	  so the matter can be discussed. :)
+
+	  Updated manpage.
+
+2002-02-15 04:49  Jochen Striepe  <jochen>
+
+	* t-prot.1: Beautify the manpage, and add some more info about bugs
+	  and todos.
+
+2002-02-15 04:30  Jochen Striepe  <jochen>
+
+	* t-prot: Beautify help text.
+
+2002-02-14 17:32  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Bjoern Buerger requested an option to make
+	  t-prot write a syslog entry for each message bounced when invoked
+	  with -p. So -d is new. Will only write syslog entries if
+	  Sys::Syslog is available but will not crash if not.
+
+2002-02-14 14:26  Jochen Striepe  <jochen>
+
+	* t-prot: Minor cleanup.
+
+2002-02-14 12:04  Jochen Striepe  <jochen>
+
+	* t-prot: Fix unbelieveable stupid bug in attachment fix. Bump to
+	  v0.36.
+
+2002-02-13 02:08  Jochen Striepe  <jochen>
+
+	* t-prot: Version bump to 0.35.
+
+2002-02-12 14:57  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Added Option -P=MESSAGE. Updated manpage.
+
+2002-02-12 13:47  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update manpage for -S=n.
+
+2002-02-12 13:45  Jochen Striepe  <jochen>
+
+	* muttrc.t-prot, contrib/muttrc.t-prot, t-prot: Improve bounce
+	  message. Change option -S to accept an integer denoting the
+	  maximum allowed lines for a valid signature.
+
+2002-02-12 05:44  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: New option -p=ADDRESS added: Finally you may
+	  use t-prot in your MTA's aliases file to bounce TOFUed emails.
+	  Manpage updated.
+
+2002-02-12 02:03  Jochen Striepe  <jochen>
+
+	* t-prot: Corrected help when called with -h. Small indent cleanup.
+
+2002-02-11 21:40  Jochen Striepe  <jochen>
+
+	* t-prot.1: Updated manpage date.
+
+2002-02-11 21:33  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Gerfried Fuchs reported that t-prot eats up
+	  attachments when hiding lines, that flaw should be fixed right
+	  now. Manpage has been updated to reflect upon that fact.
+
+2002-02-11 20:13  Jochen Striepe  <jochen>
+
+	* t-prot: Corrected line count for overlong signatures. Problem
+	  reported by Gerfried Fuchs (thanks, Alfie!).
+
+2002-01-29 15:57  Jochen Striepe  <jochen>
+
+	* t-prot: Remove goto. Patch by Gerfried Fuchs.
+
+2002-01-28 21:34  Jochen Striepe  <jochen>
+
+	* t-prot: Bump version to 0.32.
+
+2002-01-28 17:53  Jochen Striepe  <jochen>
+
+	* t-prot: Just again a version fix. Should be done now...
+
+2002-01-28 17:52  Jochen Striepe  <jochen>
+
+	* t-prot: Sigh. Another version fix.
+
+2002-01-28 17:50  Jochen Striepe  <jochen>
+
+	* t-prot.1: Fix manpage version.
+
+2002-01-28 17:48  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Fix version strings.
+
+2002-01-28 17:46  Jochen Striepe  <jochen>
+
+	* muttrc.t-prot, t-prot, t-prot.1, contrib/muttrc.t-prot: Version
+	  cleanup.
+
+2002-01-28 17:39  Jochen Striepe  <jochen>
+
+	* muttrc.t-prot, t-prot, t-prot.1, contrib/muttrc.t-prot: Initial
+	  revision
+
+2002-01-28 17:39  Jochen Striepe  <jochen>
+
+	* muttrc.t-prot, t-prot, t-prot.1, contrib/muttrc.t-prot: Initial
+	  version.
+

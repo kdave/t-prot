@@ -1,0 +1,36 @@
+T-PROT EXAMPLES
+===============
+
+Here are some examples on how to use t-prot effectively with other
+programs.
+
+
+muttrc.t-prot
+=============
+You can use the `source' statement to include this into your mutt[1]
+configuration file -- /etc/Muttrc system-wide, or ~/.muttrc for your
+very personal configuration.
+
+mailcap.t-prot, nailrc.t-prot
+=============================
+Nice and small one-line configuration examples showing how to set up
+metamail and Heirloom mailx ("nail") to use t-prot filtering.
+
+t-prot.sl
+=========
+A small S-Lang macro to show how to use t-prot from within slrn[2].
+Please note that there are still some problems with this macro --
+see the TODO file for details.
+
+filter_innd.pl
+==============
+An example for using t-prot to reject messages containing TOFU or
+excessive quoting by your INN2. Many thanks to Martin Dietze (who
+gave me the whole idea)[3].
+
+
+Links:
+======
+[1] http://www.mutt.org/
+[2] http://slrn.sourceforge.net/
+[3] http://www.fh-wedel.de/pub/fh-wedel/staff/herbert/linux/

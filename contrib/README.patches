@@ -1,0 +1,118 @@
+T-PROT PATCHES
+==============
+
+These t-prot patches still did not make it into vanilla t-prot, mostly
+for one of these reasons: They decrease performance, accuracy, flexibility,
+reliability or are a real burden to maintain.
+
+Still, there might be a chance to have them included into vanilla t-prot:
+You can send an email to the author and ask him to include this or that
+specific patch because you *need* it.
+
+Remember, filtering is a trade-off. If *many* people need a specific patch,
+odds are high for it to be included into vanilla t-prot, even though there
+are some drawbacks with it. If you keep silent, the patch will be dropped
+at some time, because noone seems to need it.
+
+Some patches exist because they bring *big* changes and need some more
+testing. So if you use these patches, please send an email to the author,
+and give some feedback on how well the patch works. It will be most helpful
+to decide if some specific feature makes it into vanilla t-prot.
+
+
+PERMANENT PATCHES
+=================
+
+These patches are updated as need be, as several distributions (that
+is, their t-prot package maintainers) use them to adapt t-prot to the
+distribution's environment. They will _not_ get dropped just because
+nobody bugs me. :)
+
+Users: Please note that these patches will most likely be applied by the
+t-prot package maintainer(s) of your distribution (if the distribution
+makes use of said Slang, mutt and gnupg versions).
+
+none
+
+
+RECENT PATCHES
+==============
+
+none
+
+
+OBSOLETE PATCHES
+================
+
+t-prot-*-mutt15*.diff and t-prot-*-gpg1*.diff
+=============================================
+By now it seems safe to assume every distribution is using mutt version
+1.5.x and gnupg newer than 1.2.6, so these patches have been incorporated
+into t-prot in version 3.0.
+
+t-prot.sl-slang2.diff
+=====================
+Slang-2 seems to be standard nowadays, so we drop Slang-1 support.
+
+t-prot-*-gol.diff (2nd version)
+===============================
+This patch has been incorporated in t-prot since version 2.95, when
+Getopt::Mixed would have broken existing configurations with the new
+behaviour of the -c command line switch. The performance issues are
+still not solved, though, so if you have an idea how to improve the
+performance of Getopt::Long, please drop a note.
+
+t-prot-*-adjtz.diff
+===================
+This patch has been dropped. Noone seems to make use of it, and it
+depends on an external program (GNU date) that may not be available
+everywhere. Running this program and loading another additional Perl
+Module also decreases performance.
+
+t-prot-*-debug.diff
+===================
+This patch is no longer available -- it seems most users find it too
+hard to apply it and include the resulting debug output to their bug
+report. Thanks to everyone who sent bug reports or gave feedback.
+
+t-prot-*-deb.unstable.diff
+==========================
+This patch is no longer available. Please use t-prot-*-mutt15*.diff
+(or any newer replacements) for this purpose.
+
+Ah yes, and thanks to the authors of the mutt and gnupg po files for
+providing enough work and inconsistencies for me never to get bored.
+
+t-prot-*-ftr.diff
+=================
+This patch is no longer available -- starting with v1.12 it is merged
+into vanilla t-prot. Thanks to everyone who sent bug reports or gave
+feedback.
+
+t-prot-*-gol.diff (first version)
+=================================
+This patch is no longer available.
+
+The feedback to Debian Bug #193937 came only from two people: the Debian
+package maintainer, and the original poster of the bug report. The
+opinion of both of them is very appreciated, but since there came no
+feedback from *anyone* else, I think the vast majority of users has no
+interest in switching to Getopt::Long. Furthermore (as stated before),
+I see no benefits in using Getopt::Long over Getopt::Mixed as long as
+the latter is working and available at CPAN.
+
+t-prot-*-indentms.diff
+======================
+This patch has been dropped, since noone seems to make use of it.
+
+t-prot-*-pgphack.diff
+=====================
+This patch is no longer available -- starting with v0.90 it is merged
+into vanilla t-prot. Thanks to everyone who sent bug reports or gave
+feedback.
+
+t-prot-*-sigtrace.diff
+======================
+This patch has been dropped. Noone seems to use it, *and* it looks
+wiser to apply stripping directly to sigtrace.
+
