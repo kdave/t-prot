@@ -1,13 +1,13 @@
 #!/usr/bin/perl -w
-# $Id: t-prot,v 1.328 2014/09/22 14:27:35 jochen Exp $
+# $Id: t-prot,v 1.330 2015/03/26 08:59:50 jochen Exp $
 
 require 5.006;
 use strict;
 use Fcntl qw(O_EXCL O_WRONLY O_CREAT);
 use Getopt::Long qw(:config gnu_getopt no_ignore_case);
-use constant VER            => '3.3';
+use constant VER            => '3.4';
 use constant REV            => '';
-use constant REL            => q$Revision: 1.328 $=~m/(\d+(?:\.\d+)+)/;
+use constant REL            => q$Revision: 1.330 $=~m/(\d+(?:\.\d+)+)/;
 # MTA expecting mail on STDIN
 # (you might have to adjust this if using a different MTA)
 use constant SENDMAIL       => '/usr/sbin/sendmail -oi';
@@ -94,13 +94,13 @@ $gpg_bug                = '... this is a bug (';
 # help(): print help text and exit with appropriate exit code
 sub help {
     print "Usage: $0 [options] 
-  -A=DIRECTORY    ad footer directory, treat ad footers as signature
+  -A DIRECTORY    ad footer directory, treat ad footers as signature
   -a              remove ad footers; requires -A
   --bigq[=n[,x]]  remove all but x lines of quotes with more than n
                   lines; default is n=30 and x=10
   --body          input has no headers; does not work with --pgp-short;
                   multipart messages will not be detected
-  -c[=n]          merge multiple blank lines to n lines (default is 2)
+  -c[n]           merge multiple blank lines to n lines (default is 2)
   --check[=FLAGS] check various criteria, print error message and quit;
                   see man page for details
   -d, --debug     print notice to syslog when bouncing; requires -p
@@ -111,12 +111,12 @@ sub help {
   --ftr-ml        enable aggressive mailing list footer matching; req. -L
   --groupwise     delete Novell Groupwise style TOFU
   -h, --help      show this short help and exit
-  -i=INFILE       file to be read; '-' for STDIN (default)
+  -i INFILE       file to be read; '-' for STDIN (default)
   -k              try to fix \"Kammquotes\"
   --kdiff=n       max. length difference between wrapped lines; req. -k
   --kmaxl=n       max. line length for wrapped line; requires -k
   --kminl=n       min. line length for wrapped line; requires -k
-  -L=DIRECTORY    mailing list footer directory, treat mailing list
+  -L DIRECTORY    mailing list footer directory, treat mailing list
                   footers as signature
   -l              delete mailing list footer; requires -L
   --lax-security  use unsafe writing method; USE ON YOUR OWN RISK!
@@ -125,15 +125,15 @@ sub help {
   -m              delete MS style TOFU; careful: might be too aggressive
   --max-lines=x   maximum number of message lines
   --ms-smart      try to be smart with MS style TOFU; req. -Mmutt and -m
-  -o=OUTFILE      file to be written to; '-' for STDOUT (default)
-  -P=MESSAGE      user defined bounce message; requires -p
-  -p[=ADDRESS]    redirect to ADDRESS if no TOFU was found
+  -o OUTFILE      file to be written to; '-' for STDOUT (default)
+  -P MESSAGE      user defined bounce message; requires -p
+  -p [ADDRESS]    redirect to ADDRESS if no TOFU was found
   --pgp-move      move pgp verification output to bottom; requires -Mmutt
   --pgp-move-vrf  move pgp output if verified and good; requires -Mmutt
   --pgp-short     hide non-relevant pgp key uids; requires -Mmutt
   -r              delete mail header lines
   --reply         squeeze multiple reply prefixes in subject line
-  -S[=n]          suppress signatures with more than n lines (default $maxsig)
+  -S[n]           suppress signatures with more than n lines (default $maxsig)
   -s              delete signature
   --sani          sanitize some header fields
   --sigsmax[=n]   max number of sigs tolerated, no value for unlimited

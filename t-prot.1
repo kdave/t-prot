@@ -1,6 +1,6 @@
-.\" $Id: t-prot.1,v 1.190 2014/08/19 07:40:02 jochen Exp $
+.\" $Id: t-prot.1,v 1.192 2015/03/26 08:59:50 jochen Exp $
 .\"
-.TH T-PROT "1" "August 2014" "T-PROT"
+.TH T-PROT "1" "March 2015" "T-PROT"
 .SH NAME
 t-prot \- TOFU Protection - Display Filter for RFC 5322 messages
 .SH SYNOPSIS
@@ -52,10 +52,10 @@ then have a peek at the Detection Options section. You may accept or
 reject/bounce messages depending on t\-prot's result.
 .SH INPUT/OUTPUT OPTIONS
 .TP
-.BR "\-i" "=FILE"
+.BR "\-i" " FILE"
 Defines an input file; default is '\-' i.e. STDIN.
 .TP
-.BR "\-o" "=FILE"
+.BR "\-o" " FILE"
 Defines the output file; default is STDOUT.
 .TP
 .B "\-\-body"
@@ -119,9 +119,9 @@ little *too* greedy.
 .sp
 .IR NOTE :
 This requires a directory with footer files to be given with option
-.BR "\-A" "=DIRECTORY".
+.BR "\-A" " DIRECTORY".
 .TP
-.BR "\-A" "=DIRECTORY"
+.BR "\-A" " DIRECTORY"
 "ad footer directory":
 Defines the directory which contains the advertisement list footers (one
 footer per file) which are to be tested when removing them with options
@@ -144,7 +144,7 @@ option.
 .sp
 .IR NOTE :
 This requires a directory with footer files to be given with option
-.BR "\-L" "=DIRECTORY".
+.BR "\-L" " DIRECTORY".
 .B \-l
 is not needed if
 .B \-\-ftr\-ml
@@ -160,9 +160,9 @@ Works similar to \-\-ftr\-ad, just that it is intended for mailing list footers.
 .sp
 .IR NOTE :
 This requires a directory with footer files to be given with option
-.BR "\-L" "=DIRECTORY".
+.BR "\-L" " DIRECTORY".
 .TP
-.BR "\-L" "=DIRECTORY"
+.BR "\-L" " DIRECTORY"
 "list footer directory":
 Defines the directory which contains the mailing list footers (one footer
 per file) which are to be tested when removing them with the options
@@ -183,7 +183,7 @@ or
 Blocks of quotes with more than n lines will be shrunk to x lines.
 Defaults are 30 for n and 10 for x.
 .TP
-.BR "\-c" "[=n]"
+.BR "\-c" "[n]"
 "compress":
 Squeezes a sequence of blank lines to just n blank lines. n defaults to 2.
 .TP
@@ -297,7 +297,7 @@ and
 locales of the recent stable versions of those programs, earlier versions
 might not work well with a recent version of t-prot.
 .TP
-.BR "\-M, \-\-mua" =MUA
+.BR "\-M, \-\-mua" MUA
 "mail user agent":
 Turn on special treatment for some mail user agents. (Right now only 
 .BR mutt (1)
@@ -366,7 +366,7 @@ Hides all mail header lines.
 Subject lines with multiple reply prefixes (Re: and translations into other
 languages) get squeezed to only one prefix.
 .TP
-.BR "\-S" "[=n]"
+.BR "\-S" "[n]"
 "suppression of overlong signatures":
 Signatures are to be n lines (not including the one containing dash-dash-space)
 or less. If there are more, it is probably not that spirited after all.
@@ -424,13 +424,13 @@ CAVEAT: This may lead to interesting effects with crossposts
 between mailing lists or with undetected signature attempts.
 .SH DETECTION OPTIONS
 .TP
-.BR "\-P" "=MESSAGE"
+.BR "\-P" " MESSAGE"
 "user defined bounce message for picky delivery": 
 You may specify your own bounce message to be returned when we try to deliver
 an email and bounce it because there is TOFU inside. See
 .BR "\-p" .
 .TP
-.BR "\-p" "[=ADDRESS]"
+.BR "\-p" " [ADDRESS]"
 "picky delivery":
 If we really find some TOFU, abort with exit code 
 .IR EX_UNAVAILABLE .
@@ -606,7 +606,7 @@ Written by Jochen Striepe <t\-prot@tolot.escape.de>.
 All of the documentation and software included in the t-prot releases
 is copyrighted by Jochen Striepe (except when explicitly stated otherwise).
 .PP
-Copyright \(co 2001-2014 Jochen Striepe. All rights reserved.                     
+Copyright \(co 2001-2015 Jochen Striepe. All rights reserved.                     
 .PP
 Redistribution and use, with or without modification, are permitted
 provided that the following conditions are met:

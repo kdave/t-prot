@@ -1,3 +1,12 @@
+2015-03-26 09:59  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Release as t-prot 3.4.
+
+2015-03-19 14:44  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Make documentation match Getopt::Long syntax:
+	  e.g. -c=1 is not supported, use -c1 instead.
+
 2014-09-22 16:27  Jochen Striepe  <jochen>
 
 	* t-prot: Release as version 3.3.
