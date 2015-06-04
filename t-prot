@@ -1,13 +1,13 @@
 #!/usr/bin/perl -w
-# $Id: t-prot,v 1.324 2014/08/22 08:58:19 jochen Exp $
+# $Id: t-prot,v 1.328 2014/09/22 14:27:35 jochen Exp $
 
 require 5.006;
 use strict;
 use Fcntl qw(O_EXCL O_WRONLY O_CREAT);
 use Getopt::Long qw(:config gnu_getopt no_ignore_case);
-use constant VER            => '3.2';
+use constant VER            => '3.3';
 use constant REV            => '';
-use constant REL            => q$Revision: 1.324 $=~m/(\d+(?:\.\d+)+)/;
+use constant REL            => q$Revision: 1.328 $=~m/(\d+(?:\.\d+)+)/;
 # MTA expecting mail on STDIN
 # (you might have to adjust this if using a different MTA)
 use constant SENDMAIL       => '/usr/sbin/sendmail -oi';
@@ -418,16 +418,21 @@ sub pgp {
         if ($$L[$x]=~/^(?:\e[^\a]+\a)?
                        (?:\Q$mutt_pgpoutstart\E|\Q$mutt_ssloutstart\E)/ox) {
             my $from;
-            for (my $m=0; $m<scalar(@$H); $m++) {
-                if (index($$H[$m], 'From:')==0) {
-                    $from = $$H[$m];
-                    $m++;
-                    while (exists($$H[$m]) && $$H[$m] =~ /^\s/)
-                        { $from .= $$H[$m]; $m++; }
-                    last;
+            if ($pgpshort) {
+                for (my $m=0; $m<scalar(@$H); $m++) {
+                    if (index($$H[$m], 'From:')==0) {
+                        $from = $$H[$m];
+                        $m++;
+                        while (exists($$H[$m]) && $$H[$m] =~ /^\s/)
+                            { $from .= $$H[$m]; $m++; }
+                        last;
+                    }
+                }
+                if (defined($from)) {
+                    ($from) =
+                        $from=~m/(\w[\w.+-]*@(?:[\w.+-]+\.)+[A-Za-z]{2,})/;
                 }
             }
-            ($from) = $from=~m/(\w[\w.+-]*@(?:[\w.+-]+\.)+[A-Za-z]{2,})/;
 
             my $uid = 1;
 
@@ -435,7 +440,8 @@ sub pgp {
                 if ($pgpshort && index($$L[$i], "gpg: $gpg_aka")==0) {
                     $uid++;
 
-                    if ($uid>1 && index($$L[$i], $from)<0) { 
+                    if (!defined($from) ||
+                       ($uid>1 && index($$L[$i], $from)<0)) {
                         splice(@$L, $i, 1);
                         splice(@$V, $i, 1);
                         $i--;

@@ -1,3 +1,21 @@
+2014-09-22 16:27  Jochen Striepe  <jochen>
+
+	* t-prot: Release as version 3.3.
+
+2014-09-22 12:39  Jochen Striepe  <jochen>
+
+	* t-prot: Removed trailing whitespace.
+
+2014-09-22 11:21  Jochen Striepe  <jochen>
+
+	* t-prot: Small speedup: Run --pgp-short specific code only with
+	  --pgp-short.
+
+2014-09-22 11:05  Jochen Striepe  <jochen>
+
+	* t-prot: Fixed a bug with -Mmutt and pgp signed and encrypted
+	  MIME/Multipart messages.  Thanks to Axel Beckert for reporting!
+
 2014-08-22 10:58  Jochen Striepe  <jochen>
 
 	* t-prot: Release as version 3.2.
