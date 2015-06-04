@@ -1,3 +1,21 @@
+2014-08-18 17:23  Jochen Striepe  <jochen>
+
+	* t-prot.1: Update date string.
+
+2014-08-18 17:14  Jochen Striepe  <jochen>
+
+	* t-prot: Release as t-prot v3.1.
+
+2014-08-18 17:13  Jochen Striepe  <jochen>
+
+	* t-prot, t-prot.1: Support mutt-kz
+	  (https://github.com/karelzak/mutt-kz) using -Mmutt-kz.  Many
+	  thanks to Hugo Roy for testing and reporting.
+
+2014-08-18 15:35  Jochen Striepe  <jochen>
+
+	* t-prot: Unicode fix for MS Outlook.
+
 2013-10-29 12:39  Jochen Striepe  <jochen>
 
 	* t-prot: After a very long testing phase, finally the version

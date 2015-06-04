@@ -1,6 +1,6 @@
-.\" $Id: t-prot.1,v 1.187 2012/07/26 14:23:11 jochen Exp $
+.\" $Id: t-prot.1,v 1.189 2014/08/18 15:23:39 jochen Exp $
 .\"
-.TH T-PROT "1" "July 2012" "T-PROT"
+.TH T-PROT "1" "August 2014" "T-PROT"
 .SH NAME
 t-prot \- TOFU Protection - Display Filter for RFC 5322 messages
 .SH SYNOPSIS
@@ -25,10 +25,10 @@ initially designed to cope with the output of the MUA mutt (which
 is the reason for not using standard CPAN modules for handling
 messages).
 .PP
-T\-prot offers example configuration files for mutt, Heirloom mailx
-and metamail. Also coming with the t-prot package is the example
-S-Lang macro t\-prot.sl for using t-prot from within slrn. There is
-a proof\-of\-concept filter for INN2, which you will have to adapt
+T\-prot offers example configuration files for mutt and its fork mutt\-kz,
+Heirloom mailx and metamail. Also coming with the t-prot package is the
+example S-Lang macro t\-prot.sl for using t-prot from within slrn. There
+is a proof\-of\-concept filter for INN2, which you will have to adapt
 to the needs of the news site you host. For use with sendmail's
 alias(5) file, please see below (the option
 .BR "\-p" " provides an example line)."
@@ -80,7 +80,8 @@ privileges).
 .BR "\-\-max\-lines" =x
 Maximum number of lines a message may count (with headers). If the message
 is longer than x lines, the message will not be processed but printed
-unmodified. Exit status will be EX_DATAERR except when called with \-Mmutt.
+unmodified. Exit status will be EX_DATAERR except when called with \-Mmutt
+or \-Mmutt\-kz.
 .SH ADVERTISEMENT AND MAILING LIST FOOTERS
 .TP
 .B "\-a"
@@ -261,14 +262,16 @@ Requires
 Specify which locale to use for correct parsing of your MUA's formatting
 of the displayed message (usually it is the locale your MUA uses). Right
 now this option is only used when
-.I "\-Mmutt"
+.IR "\-Mmutt" " or"
+.I "\-Mmutt\-kz"
 is specified, but this may change in future. You need the Perl module
 .I "Locale::gettext"
 for this feature.
 .sp
 .IR NOTE :
 If you use
-.B mutt
+.BR mutt ,
+.B mutt-kz
 or
 .B gnupg
 with locales, t-prot will only work correctly if you specify the corresponding
@@ -284,24 +287,23 @@ You also have to make sure you are running t-prot
 with matching
 .B gnupg
 and 
-.B mutt
+.BR mutt " /"
+.B "mutt\-kz"
 versions. T-prot detects
 .B gnupg
 and
-.B mutt
+.BR mutt " /"
+.B "mutt\-kz"
 locales of the recent stable versions of those programs, earlier versions
-might not work well with a recent version of t-prot. There are patches available
-to make t-prot fit into environments with some other
-.B mutt
-and
-.B gnupg
-versions.
+might not work well with a recent version of t-prot.
 .TP
 .BR "\-M, \-\-mua" =MUA
 "mail user agent":
 Turn on special treatment for some mail user agents. (Right now only 
 .BR mutt (1)
-is supported, but more might be added in future.)
+and
+.BR "mutt\-kz" (1)
+are supported, but more might be added in future.)
 .IR Caveat :
 If your MUA is supported by this feature you must ensure t-prot makes
 use of it when called from within your MUA to work as desired.
@@ -328,19 +330,22 @@ this option will probably just be interesting for mutt message hooks
 .BR know " the sender tries to write legible messages)."
 .sp
 Requires
-.BR "\-Mmutt" " and"
+.BR "\-Mmutt" " /"
+.BR "\-Mmutt\-kz" " and"
 .BR "\-m" .
 .TP
 .B \-\-pgp\-move
 Move PGP and SSL verification output to bottom; requires
-.BR "\-Mmutt" .
+.BR "\-Mmutt" " /"
+.BR "\-Mmutt\-kz" .
 .TP
 .B \-\-pgp\-move\-vrf
 Move PGP and SSL verification output to bottom only if verification shows a
 good signature and the signature could be verified as authentic (using a
 trust path). If there is any problem with the signature, the PGP output
 should not be moved so the user is more likely to notice. Requires
-.BR "\-Mmutt" .
+.BR "\-Mmutt" " /"
+.BR "\-Mmutt\-kz" .
 .sp
 .IR NOTE :
 If gpg is terminated before finished (e.g. hitting Ctrl-C, or using
@@ -350,7 +355,8 @@ to be smart, there will be false positives.
 .TP
 .B \-\-pgp\-short
 Hide non-relevant PGP key uids; requires
-.BR "\-Mmutt" .
+.BR "\-Mmutt" " /"
+.BR "\-Mmutt\-kz" .
 .TP
 .B "\-r"
 "rip header off":
@@ -482,7 +488,7 @@ The environment variables
 .IR LC_MESSAGES ,
 and
 .I LANG
-are read and respected when interpreting output by mutt or gnupg
+are read and respected when interpreting output by mutt / mutt\-kz or gnupg
 (unless they are overruled by the \-\-locale option). T-prot's own
 output is English regardless of any locale setting.
 .SH EXIT STATUS
@@ -535,9 +541,10 @@ files as absolutely needed in any footer directory.
 All PGP related options are eating up lots of CPU time. Try to avoid them
 on unsigned and unencrypted messages.
 .PP
-When calling t-prot from within mutt, you might use mutt's folder-hook
-and message-hook facilities to turn options on only when needed, e.g. to
-set up a different footer directory for each mailing list folder.
+When calling t-prot from within mutt (or mutt\-kz), you might use mutt's
+folder-hook and message-hook facilities to turn options on only when
+needed, e.g. to set up a different footer directory for each mailing list
+folder.
 .SH TROUBLESHOOTING
 .TP
 .IR Q :
@@ -599,7 +606,7 @@ Written by Jochen Striepe <t\-prot@tolot.escape.de>.
 All of the documentation and software included in the t-prot releases
 is copyrighted by Jochen Striepe (except when explicitly stated otherwise).
 .PP
-Copyright \(co 2001-2012 Jochen Striepe. All rights reserved.                     
+Copyright \(co 2001-2014 Jochen Striepe. All rights reserved.                     
 .PP
 Redistribution and use, with or without modification, are permitted
 provided that the following conditions are met:
@@ -692,6 +699,7 @@ section). Beside that, all main features should be implemented by now.
 See the TODO file for more information.
 .SH "SEE ALSO"
 .BR mutt (1),
+.BR mutt\-kz (1),
 .BR muttrc (5)
 and the part about "display_filter", 
 .BR perl (1),
