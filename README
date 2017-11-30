@@ -37,7 +37,7 @@ T-PROT -- TOFU protection
    I just use mutt and slrn, but I will gladly accept configuration samples
    for other user agents. There are already examples for mailcap(1) and the
    Heirloom mailx (a.k.a. nail) in the contrib/ directory. The mutt example
-   works with mutt-kz as well.
+   works with neomutt as well.
 
 6. Where did the idea come from?
    Many thanks  to  Gerhard H. Wrodnigg  who uses a  TOFU protection script 

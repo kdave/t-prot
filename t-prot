@@ -1131,7 +1131,7 @@ if (defined $_t_maxsig) { $lsig = $_t_maxsig ? $_t_maxsig : $maxsig; }
 if (defined $_t_mua) {
     $mua = lc($_t_mua);
     # mutt still displays the message when ^C'ing pgp verification:
-    if ($mua eq 'mutt' || $mua eq 'mutt-kz') {
+    if ($mua eq 'mutt' || $mua eq 'mutt-kz' || $mua eq 'neomuttt') {
         $SIG{'INT'} = 'sigint_handler';
     }
 }
@@ -1150,7 +1150,7 @@ if (defined $_t_nohdr) { $nohdr=1; $hdrs=1; }
 if (defined $_t_cr) { $cr = $_t_cr ? $_t_cr : $crshrink; }
 if ($ms_smart) { $ms = 1; }
 
-if ($mua eq 'mutt' || $mua eq 'mutt-kz') {
+if ($mua eq 'mutt' || $mua eq 'mutt-kz' || $mua eq 'neomutt') {
     if (defined $locale &&
             $locale ne '' && $locale ne 'C' && $locale ne 'POSIX') {
         eval { require Locale::gettext; };
@@ -1218,7 +1218,7 @@ if ($mua eq 'mutt' || $mua eq 'mutt-kz') {
                 Locale::gettext::gettext("... this is a bug (%s:%d:%s)\n") =~
                 m/^([^%]*)/;
         }
-        # mutt and mutt-kz right now only differ in the gettext domain name,
+        # mutt and neomutt right now only differ in the gettext domain name,
         # so after fetching the gettext lines we treat them the same:
         $mua = 'mutt';
     }
